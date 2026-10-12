@@ -1,0 +1,4477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3730a3">
+
+    <title>MBU Data Science Digital Library | Premium 3D Edition</title>
+
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+
+            --primary: #173b7a;
+            --secondary: #2563eb;
+            --light-blue: #eef4ff;
+            --background: #f4f7fb;
+            --card: #ffffff;
+            --text: #222222;
+            --muted: #666666;
+            --border: #dfe5ef;
+            --success: #16a34a;
+            --danger: #dc2626;
+
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--background);
+
+            color: var(--text);
+
+            transition:
+                background 0.3s,
+                color 0.3s;
+
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ===================================================== */
+
+        body.dark {
+
+            --background: #101827;
+            --card: #172235;
+            --text: #f3f4f6;
+            --muted: #b7c0cf;
+            --border: #334155;
+            --light-blue: #182943;
+
+        }
+
+
+        /* =====================================================
+           TOP HEADER
+        ===================================================== */
+
+        header {
+
+            background: white;
+
+            text-align: center;
+
+            padding: 25px 20px;
+
+            border-bottom:
+                4px solid var(--primary);
+
+            position: relative;
+
+        }
+
+
+        header img {
+
+            width: 110px;
+
+            height: 110px;
+
+            object-fit: contain;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        header h1 {
+
+            color: var(--primary);
+
+            font-size: 32px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        header h2 {
+
+            color: #333;
+
+            font-size: 21px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        header h3 {
+
+            color: #555;
+
+            font-size: 18px;
+
+            font-weight: normal;
+
+        }
+
+
+        /* =====================================================
+           DARK MODE HEADER
+        ===================================================== */
+
+        body.dark header {
+
+            background: #172235;
+
+        }
+
+
+        body.dark header h2,
+        body.dark header h3 {
+
+            color: #ddd;
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #173b7a,
+                    #2563eb
+                );
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.15);
+
+        }
+
+
+        nav ul {
+
+            list-style: none;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        nav li a {
+
+            display: block;
+
+            color: white;
+
+            padding: 15px 18px;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+
+        }
+
+
+        nav li a:hover {
+
+            background:
+                rgba(255,255,255,0.15);
+
+        }
+
+
+        .theme-button {
+
+            border: none;
+
+            background: rgba(255,255,255,0.15);
+
+            color: white;
+
+            padding: 9px 13px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            margin: 5px;
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search-area {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #173b7a,
+                    #2563eb
+                );
+
+            padding: 25px;
+
+            text-align: center;
+
+        }
+
+
+        .search-box {
+
+            max-width: 750px;
+
+            margin: auto;
+
+            display: flex;
+
+            background: white;
+
+            border-radius: 35px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.15);
+
+        }
+
+
+        .search-box input {
+
+            flex: 1;
+
+            border: none;
+
+            outline: none;
+
+            padding: 15px 20px;
+
+            font-size: 16px;
+
+        }
+
+
+        .search-box button {
+
+            border: none;
+
+            background: var(--primary);
+
+            color: white;
+
+            padding: 0 25px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           COMMON SECTIONS
+        ===================================================== */
+
+        section {
+
+            padding: 55px 7%;
+
+        }
+
+
+        .section-title {
+
+            text-align: center;
+
+            color: var(--primary);
+
+            font-size: 30px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        body.dark .section-title {
+
+            color: #7fb0ff;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        #home {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef4ff,
+                    #ffffff
+                );
+
+        }
+
+
+        body.dark #home {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #16253d,
+                    #101827
+                );
+
+        }
+
+
+        .hero {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr;
+
+            gap: 30px;
+
+            align-items: center;
+
+        }
+
+
+        .hero-text h2 {
+
+            font-size: 40px;
+
+            color: var(--primary);
+
+            margin-bottom: 15px;
+
+        }
+
+
+        body.dark .hero-text h2 {
+
+            color: #8bb7ff;
+
+        }
+
+
+        .hero-text p {
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: var(--muted);
+
+        }
+
+
+        .welcome-tag {
+
+            display: inline-block;
+
+            background: #dbeafe;
+
+            color: #173b7a;
+
+            padding: 7px 14px;
+
+            border-radius: 20px;
+
+            margin-bottom: 15px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================================
+           STUDENT CARD
+        ===================================================== */
+
+        .student-card {
+
+            background: var(--card);
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.12);
+
+            text-align: center;
+
+        }
+
+
+        .student-card img {
+
+            width: 125px;
+
+            height: 145px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            border:
+                4px solid var(--primary);
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .student-card h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 15px;
+
+        }
+
+        body.dark .student-card h3 {
+
+            color: #8bb7ff;
+
+        }
+
+
+        .student-info {
+
+            text-align: left;
+
+        }
+
+
+        .student-info p {
+
+            padding: 7px 0;
+
+            border-bottom:
+                1px solid var(--border);
+
+            color: var(--muted);
+
+        }
+
+
+        .student-info strong {
+
+            color: var(--text);
+
+        }
+
+
+        /* =====================================================
+           DASHBOARD
+        ===================================================== */
+
+        .dashboard {
+
+            max-width: 1200px;
+
+            margin: 30px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .stat-card {
+
+            background: var(--card);
+
+            padding: 22px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.08);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .stat-card:hover {
+
+            transform:
+                translateY(-5px);
+
+        }
+
+
+        .stat-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 14px;
+
+            background: #dbeafe;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+        }
+
+
+        .stat-card h3 {
+
+            color: var(--primary);
+
+            font-size: 25px;
+
+        }
+
+
+        body.dark .stat-card h3 {
+
+            color: #8bb7ff;
+
+        }
+
+
+        .stat-card p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           QUICK ACCESS
+        ===================================================== */
+
+        #quick {
+
+            background: white;
+
+        }
+
+
+        body.dark #quick {
+
+            background: #101827;
+
+        }
+
+
+        .quick-grid {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .quick-card {
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .quick-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.1);
+
+        }
+
+
+        .quick-card .icon {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .quick-card h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 7px;
+
+        }
+
+
+        body.dark .quick-card h3 {
+
+            color: #8bb7ff;
+
+        }
+
+
+        .quick-card p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           PROGRESS
+        ===================================================== */
+
+        .progress-section {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            background: var(--card);
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+
+        }
+
+
+        .progress-item {
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .progress-label {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+        }
+
+
+        .progress-bar {
+
+            height: 12px;
+
+            background: #e5e7eb;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #173b7a,
+                    #3b82f6
+                );
+
+            border-radius: 20px;
+
+        }
+
+
+        /* =====================================================
+           NOTICE
+        ===================================================== */
+
+        .notice {
+
+            max-width: 1000px;
+
+            margin: 0 auto 30px;
+
+            background: #fff7ed;
+
+            border-left:
+                5px solid #f97316;
+
+            padding: 18px 20px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .notice strong {
+
+            color: #c2410c;
+
+        }
+
+
+        body.dark .notice {
+
+            background: #3b281b;
+
+        }
+
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
+        .card-container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 22px;
+
+        }
+
+
+        .card {
+
+            background: var(--card);
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            border:
+                1px solid var(--border);
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+
+            position: relative;
+
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.12);
+
+        }
+
+
+        .card h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 12px;
+
+        }
+
+
+        body.dark .card h3 {
+
+            color: #8bb7ff;
+
+        }
+
+
+        .card p {
+
+            color: var(--muted);
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .btn {
+
+            display: inline-block;
+
+            border: none;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #173b7a,
+                    #2563eb
+                );
+
+            color: white;
+
+            padding: 10px 17px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 5px 12px rgba(37,99,235,0.3);
+
+        }
+
+
+        /* =====================================================
+           MODULE SEARCH
+        ===================================================== */
+
+        .filter-box {
+
+            max-width: 600px;
+
+            margin:
+                0 auto 30px;
+
+        }
+
+
+        .filter-box input {
+
+            width: 100%;
+
+            padding: 14px 18px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid var(--border);
+
+            background: var(--card);
+
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           FAVORITE
+        ===================================================== */
+
+        .favorite {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            background: none;
+
+            border: none;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           TOOLS
+        ===================================================== */
+
+        #tools {
+
+            background: var(--light-blue);
+
+        }
+
+
+        .tool-card {
+
+            text-align: center;
+
+        }
+
+
+        .tool-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        /* =====================================================
+           CALCULATOR
+        ===================================================== */
+
+        .calculator {
+
+            max-width: 350px;
+
+            margin: auto;
+
+            background: #111827;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.2);
+
+        }
+
+
+        .calc-display {
+
+            width: 100%;
+
+            height: 65px;
+
+            margin-bottom: 15px;
+
+            background: #1f2937;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            text-align: right;
+
+            padding: 10px;
+
+            font-size: 25px;
+
+        }
+
+
+        .calc-buttons {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 8px;
+
+        }
+
+
+        .calc-buttons button {
+
+            height: 50px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+        }
+
+
+        /* =====================================================
+           STUDY TIMER
+        ===================================================== */
+
+        .timer {
+
+            max-width: 400px;
+
+            margin: auto;
+
+            text-align: center;
+
+            background: var(--card);
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+
+        }
+
+
+        .timer-display {
+
+            font-size: 55px;
+
+            font-weight: bold;
+
+            color: var(--primary);
+
+            margin: 20px 0;
+
+        }
+
+
+        body.dark .timer-display {
+
+            color: #8bb7ff;
+
+        }
+
+
+        /* =====================================================
+           TODO
+        ===================================================== */
+
+        .todo {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            background: var(--card);
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+        }
+
+
+        .todo-input {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .todo-input input {
+
+            flex: 1;
+
+            padding: 12px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 8px;
+
+            background: var(--card);
+
+            color: var(--text);
+
+            outline: none;
+
+        }
+
+
+        #taskList {
+
+            list-style: none;
+
+        }
+
+
+        #taskList li {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 12px;
+
+            border-bottom:
+                1px solid var(--border);
+
+        }
+
+
+        #taskList li button {
+
+            border: none;
+
+            background: var(--danger);
+
+            color: white;
+
+            padding: 5px 8px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           NOTES
+        ===================================================== */
+
+        .notes-box {
+
+            max-width: 800px;
+
+            margin: auto;
+
+        }
+
+
+        .notes-box textarea {
+
+            width: 100%;
+
+            min-height: 220px;
+
+            padding: 18px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            resize: vertical;
+
+            background: var(--card);
+
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           LAB
+        ===================================================== */
+
+        #lab {
+
+            background: white;
+
+        }
+
+
+        body.dark #lab {
+
+            background: #101827;
+
+        }
+
+
+        .experiment-number {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            background: var(--primary);
+
+            color: white;
+
+            padding: 5px 9px;
+
+            border-radius: 15px;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =====================================================
+           EXPERIMENT VIEWER
+        ===================================================== */
+
+        #experimentViewer {
+
+            display: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef4ff,
+                    #ffffff
+                );
+
+        }
+
+
+        .experiment-box {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            background: var(--card);
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.1);
+
+        }
+
+
+        .experiment-box h2 {
+
+            color: var(--primary);
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .experiment-box h3 {
+
+            color: var(--primary);
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        body.dark .experiment-box h2,
+        body.dark .experiment-box h3 {
+
+            color: #8bb7ff;
+
+        }
+
+
+        pre {
+
+            background: #111827;
+
+            color: #f3f4f6;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            overflow-x: auto;
+
+            line-height: 1.5;
+
+            margin-top: 10px;
+
+        }
+
+
+        .output {
+
+            background: #f1f5f9;
+
+            color: #222;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            margin-top: 10px;
+
+            white-space: pre-wrap;
+
+            font-family: monospace;
+
+        }
+
+
+        body.dark .output {
+
+            background: #263449;
+
+            color: #f3f4f6;
+
+        }
+
+
+        /* =====================================================
+           SUB EXPERIMENTS
+        ===================================================== */
+
+        .subexperiment-menu {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,minmax(220px,1fr));
+
+            gap: 12px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .subexperiment-btn {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #173b7a,
+                    #2563eb
+                );
+
+            color: white;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .subexperiment-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .subexperiment-content {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 25px;
+
+            background: var(--light-blue);
+
+            border-left:
+                5px solid var(--primary);
+
+            border-radius: 10px;
+
+        }
+
+
+        .subexperiment-content.active {
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           RESOURCES
+        ===================================================== */
+
+        .resource-grid {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,minmax(220px,1fr));
+
+            gap: 20px;
+
+        }
+
+
+        .resource {
+
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            transition: 0.3s;
+
+        }
+
+
+        .resource:hover {
+
+            transform:
+                translateY(-5px);
+
+        }
+
+
+        .resource-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .resource h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 10px;
+
+        }
+
+
+        body.dark .resource h3 {
+
+            color: #8bb7ff;
+
+        }
+
+
+        .resource p {
+
+            color: var(--muted);
+
+            margin-bottom: 15px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        #about {
+
+            background: var(--light-blue);
+
+        }
+
+
+        .about-box {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            background: var(--card);
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            line-height: 1.8;
+
+            color: var(--muted);
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #102d61,
+                    #173b7a
+                );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px;
+
+        }
+
+
+        footer p {
+
+            margin: 7px;
+
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        #topButton {
+
+            position: fixed;
+
+            bottom: 25px;
+
+            right: 25px;
+
+            width: 45px;
+
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 20px;
+
+            display: none;
+
+            z-index: 999;
+
+        }
+
+
+        /* =====================================================
+           DIGITAL CLOCK
+        ===================================================== */
+
+        #clock {
+
+            font-size: 14px;
+
+            color: var(--muted);
+
+            margin-top: 8px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:900px) {
+
+            .hero {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .dashboard {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+
+            .quick-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            header h1 {
+
+                font-size: 24px;
+
+            }
+
+
+            header h2 {
+
+                font-size: 18px;
+
+            }
+
+
+            header h3 {
+
+                font-size: 16px;
+
+            }
+
+
+            nav ul {
+
+                flex-direction: column;
+
+            }
+
+
+            nav li {
+
+                width: 100%;
+
+                text-align: center;
+
+            }
+
+
+            .hero-text h2 {
+
+                font-size: 29px;
+
+            }
+
+
+            .dashboard {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .quick-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            section {
+
+                padding:
+                    40px 5%;
+
+            }
+
+        }
+
+
+        /* BOOK-STYLE FLIPBOOK: facing pages + animated page turns */
+        .book-label{display:inline-block;background:#e7efff;color:#173b7a;font-size:12px;font-weight:bold;letter-spacing:1px;padding:6px 10px;border-radius:5px;margin-bottom:12px}
+        .module-card{border-top:5px solid var(--primary)}
+        .module-card .btn{margin-top:5px}
+        #moduleNotes{display:none;background:#e9e4d8;padding:28px 3%;color:#252525}
+        .flipbook-shell{max-width:1250px;margin:0 auto}
+        .flipbook-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 auto 16px;max-width:1150px}
+        .flipbook-toolbar .toolbar-left,.flipbook-toolbar .toolbar-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+        .flipbook-toolbar button{cursor:pointer}
+        .flipbook-status{font:600 14px Arial,sans-serif;color:#433b31;min-width:125px;text-align:center}
+        .flipbook{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:1150px;min-height:570px;margin:0 auto;background:#d2c5aa;border-radius:5px;box-shadow:0 18px 42px rgba(45,33,18,.24);perspective:1800px;overflow:hidden}
+        .flipbook:before{content:"";position:absolute;z-index:4;left:50%;top:0;bottom:0;width:18px;transform:translateX(-50%);background:linear-gradient(90deg,rgba(0,0,0,.12),rgba(255,255,255,.65) 45%,rgba(0,0,0,.12));pointer-events:none}
+        .flip-page{position:relative;min-width:0;padding:42px clamp(22px,4vw,54px) 55px;background:#fffdf6;color:#2b2925;font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.75;box-sizing:border-box;overflow-wrap:anywhere}
+        .flip-page.left{box-shadow:inset -12px 0 18px -18px #342b1f}
+        .flip-page.right{box-shadow:inset 12px 0 18px -18px #342b1f}
+        .flip-page.left:after,.flip-page.right:after{content:"";position:absolute;top:0;bottom:0;width:24px;pointer-events:none}
+        .flip-page.left:after{right:0;background:linear-gradient(90deg,transparent,rgba(60,43,19,.045))}
+        .flip-page.right:after{left:0;background:linear-gradient(90deg,rgba(60,43,19,.045),transparent)}
+        .page-kicker{font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:1.8px;color:#8a6b35;margin-bottom:13px}
+        .flip-page h2{font:700 clamp(23px,3vw,32px)/1.2 Georgia,"Times New Roman",serif;color:#183b70;margin:0 0 18px}
+        .flip-page h3{font:700 21px/1.3 Georgia,"Times New Roman",serif;color:#183b70;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid #d9cba9}
+        .flip-page h4{font:700 16px Arial,sans-serif;margin:18px 0 6px;color:#4d3d28}
+        .flip-page p{margin:0 0 14px}
+        .flip-page ul,.flip-page ol{padding-left:22px}
+        .flip-page li{margin:5px 0}
+        .page-example{background:#f1f6ee;border-left:3px solid #5a8a50;padding:11px 13px;margin:17px 0;font:14px/1.65 Arial,sans-serif}
+        .page-callout{background:#f5eedf;border-left:3px solid #b58a3b;padding:12px 14px;margin:18px 0;font:14px/1.65 Arial,sans-serif}
+        .page-number{position:absolute;bottom:17px;left:0;right:0;text-align:center;font:12px Arial,sans-serif;color:#9a8b72}
+        .flipbook.animate-next .flip-page.right{animation:turnNext .48s ease both;transform-origin:left center}
+        .flipbook.animate-prev .flip-page.left{animation:turnPrev .48s ease both;transform-origin:right center}
+        @keyframes turnNext{0%{transform:rotateY(0);filter:brightness(1)}45%{transform:rotateY(-16deg);filter:brightness(.84)}100%{transform:rotateY(0);filter:brightness(1)}}
+        @keyframes turnPrev{0%{transform:rotateY(0);filter:brightness(1)}45%{transform:rotateY(16deg);filter:brightness(.84)}100%{transform:rotateY(0);filter:brightness(1)}}
+        .flipbook-index{max-width:1150px;margin:14px auto 0;background:#fffdf6;border:1px solid #d4c7ac;padding:13px 18px;border-radius:4px;font:14px/1.7 Arial,sans-serif}
+        .flipbook-index strong{display:block;margin-bottom:5px;color:#183b70}
+        .flipbook-index button{border:0;background:transparent;color:#315c98;text-decoration:underline;cursor:pointer;padding:4px 8px;font:inherit}
+        .flipbook-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px auto 0}
+        .flipbook-cover-title{font-size:clamp(28px,4vw,44px)!important;color:#173b70!important}
+        .cover-art{height:100%;min-height:390px;display:flex;flex-direction:column;justify-content:center;text-align:center;border:3px double #b58a3b;padding:24px;background:radial-gradient(ellipse at center,#fffdf6,#f2e4c2)}
+        .cover-art .ornament{font-size:36px;color:#b58a3b;margin-bottom:18px}
+        .cover-art .cover-sub{font:12px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#806331}
+        .cover-art p{font-size:16px}
+        @media(max-width:760px){
+          #moduleNotes{padding:15px 2%}
+          .flipbook{grid-template-columns:minmax(0,1fr);min-height:0;overflow:visible}
+          .flipbook:before{display:none}
+          .flip-page{min-height:430px;padding:30px 25px 50px}
+          .flip-page.left{display:none}
+          .flip-page.right{box-shadow:0 5px 18px rgba(45,33,18,.14)}
+          .flipbook.animate-next .flip-page.right,.flipbook.animate-prev .flip-page.right{animation:turnNext .35s ease both;transform-origin:left center}
+          .flipbook-toolbar{justify-content:center}
+          .flipbook-status{order:3;width:100%}
+        }
+        @media(prefers-reduced-motion:reduce){.flipbook.animate-next .flip-page.right,.flipbook.animate-prev .flip-page.left{animation:none}}
+        @media print{
+          body *{visibility:hidden}
+          #moduleNotes,#moduleNotes *{visibility:visible}
+          #moduleNotes{display:block!important;position:absolute;left:0;top:0;width:100%;padding:0;background:white}
+          .flipbook-toolbar,.flipbook-index,.flipbook-actions{display:none!important}
+          .flipbook{display:block;box-shadow:none;max-width:none;overflow:visible;min-height:0}
+          .flipbook:before{display:none}
+          .flip-page{display:block!important;min-height:0;page-break-after:always;box-shadow:none!important;padding:20mm 18mm 18mm}
+          .page-number{position:static;margin-top:30px}
+        }
+    
+        /* LAB EXPERIMENTS */
+        .lab-intro{max-width:950px;margin:0 auto 20px;text-align:center;line-height:1.7}
+        .lab-card{display:flex;flex-direction:column;align-items:flex-start}
+        .lab-card .btn{margin-top:auto}
+        #experimentViewer{display:none}
+        .experiment-box{max-width:1100px;margin:0 auto;background:var(--card-bg, #fff);border-radius:14px;padding:clamp(18px,3vw,34px);box-shadow:0 8px 26px rgba(0,0,0,.09)}
+        .experiment-box h2{color:var(--primary);margin-top:0}
+        .experiment-box h3{margin-top:25px;border-bottom:1px solid #ddd;padding-bottom:8px}
+        .experiment-meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}
+        .experiment-meta span{background:#edf3ff;color:#1c427d;border-radius:20px;padding:6px 11px;font:600 12px Arial,sans-serif}
+        .experiment-part{margin:20px 0}
+        .experiment-part h4{margin:12px 0 7px}
+        .experiment-code-wrap{position:relative;margin:10px 0}
+        .experiment-code{white-space:pre;overflow:auto;background:#151c2a;color:#edf2fb;padding:20px;border-radius:10px;font:13px/1.6 Consolas,"Courier New",monospace;tab-size:4}
+        .copy-code-btn{border:0;border-radius:6px;padding:7px 11px;cursor:pointer;background:#e8efff;color:#183d78;font-weight:700}
+        .code-toolbar{display:flex;justify-content:flex-end;margin-bottom:6px}
+        .experiment-output{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;border-left:4px solid #5b8b66;padding:14px 16px;border-radius:5px;font:13px/1.6 Consolas,"Courier New",monospace;color:#27322a}
+        .experiment-note{background:#fff5dc;border-left:4px solid #d3a13c;padding:13px 16px;border-radius:5px;line-height:1.6}
+        .experiment-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+        body.dark .experiment-box{background:#202735;color:#edf0f7}
+        body.dark .experiment-output{background:#17251f;color:#e7f5e9}
+        body.dark .experiment-note{background:#3a3020;color:#fff0c9}
+        @media print{nav,.search-area,#lab,.experiment-actions,.copy-code-btn,.code-toolbar{display:none!important}#experimentViewer{display:block!important}.experiment-box{box-shadow:none}.experiment-code{white-space:pre-wrap;overflow:visible;break-inside:avoid}}
+
+
+
+        /* =========================================================
+           PREMIUM 3D REDESIGN — responsive, accessible, no libraries
+        ========================================================= */
+        :root{
+          --primary:#4f46e5;
+          --secondary:#06b6d4;
+          --light-blue:#eef2ff;
+          --background:#f5f7ff;
+          --card:rgba(255,255,255,.88);
+          --text:#172033;
+          --muted:#667085;
+          --border:rgba(99,102,241,.15);
+          --success:#059669;
+          --danger:#dc2626;
+          --premium-shadow:0 22px 55px rgba(38,45,105,.13);
+          --premium-shadow-hover:0 30px 65px rgba(38,45,105,.22);
+        }
+        html{scroll-behavior:smooth;scroll-padding-top:90px}
+        body{
+          background:
+            radial-gradient(ellipse at 10% 4%,rgba(99,102,241,.12),transparent 32%),
+            radial-gradient(ellipse at 90% 20%,rgba(6,182,212,.10),transparent 30%),
+            linear-gradient(180deg,#f8faff 0%,#f0f4ff 48%,#f8fafc 100%);
+          color:var(--text);
+          line-height:1.65;
+          overflow-x:hidden;
+        }
+        body:before{
+          content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.22;
+          background-image:radial-gradient(#818cf8 .7px,transparent .7px);
+          background-size:22px 22px;
+          mask-image:linear-gradient(to bottom,black,transparent 75%);
+        }
+        ::selection{background:#c7d2fe;color:#1e1b4b}
+        a{color:inherit}
+        button,input,textarea,select{font:inherit}
+        button{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+        button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #22d3ee;outline-offset:3px}
+        header{
+          isolation:isolate;position:relative;overflow:hidden;text-align:center;
+          padding:36px 20px 32px;border:0;border-radius:0 0 34px 34px;
+          color:white;background:
+            radial-gradient(circle at 15% 0%,rgba(255,255,255,.2),transparent 25%),
+            radial-gradient(circle at 88% 35%,rgba(34,211,238,.28),transparent 24%),
+            linear-gradient(125deg,#111c4e 0%,#3730a3 48%,#087eaa 100%);
+          box-shadow:0 20px 50px rgba(30,41,120,.24);
+        }
+        header:before,header:after{
+          content:"";position:absolute;z-index:-1;border:1px solid rgba(255,255,255,.15);
+          border-radius:50%;transform:rotate(-25deg);
+        }
+        header:before{width:360px;height:360px;right:-90px;top:-230px;box-shadow:0 0 0 28px rgba(255,255,255,.025),0 0 0 58px rgba(255,255,255,.025)}
+        header:after{width:230px;height:230px;left:-110px;bottom:-160px;box-shadow:0 0 0 24px rgba(255,255,255,.035)}
+        header img{
+          width:86px;height:86px;padding:9px;margin-bottom:12px;object-fit:contain;
+          background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.65);
+          border-radius:23px;box-shadow:0 12px 30px rgba(0,0,0,.2);
+          transform:translateZ(25px);transition:transform .3s ease;
+        }
+        header img:hover{transform:translateY(-5px) rotate(-3deg)}
+        header h1{color:#fff;font-size:clamp(24px,3.5vw,39px);font-weight:850;letter-spacing:.055em;text-shadow:0 4px 18px rgba(0,0,0,.22);margin-bottom:5px}
+        header h2{color:#dbeafe;font-size:clamp(16px,2vw,22px);margin-bottom:1px}
+        header h3{color:#c7f9ff;font-size:16px;letter-spacing:.14em;text-transform:uppercase}
+        #clock{display:inline-block;margin-top:14px;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-size:12px;color:#e0f2fe;backdrop-filter:blur(12px)}
+        nav{
+          position:sticky;top:0;z-index:1000;padding:7px 10px;
+          background:rgba(17,24,74,.88);backdrop-filter:blur(18px);
+          border-bottom:1px solid rgba(255,255,255,.12);
+          box-shadow:0 9px 28px rgba(23,37,84,.18);
+        }
+        nav ul{gap:4px}
+        nav li a{position:relative;padding:11px 15px;border-radius:12px;color:#e8edff;font-weight:650;font-size:13px;transition:all .22s ease}
+        nav li a:after{content:"";position:absolute;left:15px;right:15px;bottom:5px;height:2px;border-radius:2px;background:#67e8f9;transform:scaleX(0);transition:transform .22s ease}
+        nav li a:hover{background:rgba(255,255,255,.11);transform:translateY(-2px);color:white}
+        nav li a:hover:after{transform:scaleX(1)}
+        .theme-button{background:linear-gradient(135deg,#6366f1,#0891b2);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:9px 13px;font-weight:700;box-shadow:0 5px 13px rgba(0,0,0,.14)}
+        .theme-button:hover{transform:translateY(-2px);box-shadow:0 9px 20px rgba(0,0,0,.2)}
+        .search-area{
+          padding:30px 18px;background:transparent;
+          position:relative;
+        }
+        .search-box{
+          max-width:790px;padding:6px;border-radius:20px;overflow:hidden;
+          background:rgba(255,255,255,.84);border:1px solid rgba(129,140,248,.24);
+          box-shadow:0 14px 36px rgba(49,46,129,.12);backdrop-filter:blur(16px);
+        }
+        .search-box input{background:transparent;padding:14px 18px;color:#172033}
+        .search-box button{
+          border:0;border-radius:15px;padding:0 25px;color:white;font-weight:750;cursor:pointer;
+          background:linear-gradient(135deg,#4f46e5,#0891b2);
+          box-shadow:0 7px 17px rgba(79,70,229,.24);
+        }
+        .search-box button:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(79,70,229,.32)}
+        section{padding:clamp(34px,5vw,65px) clamp(16px,4vw,48px);position:relative}
+        #home{padding-top:25px}
+        .hero{
+          max-width:1250px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,.75fr);
+          align-items:stretch;gap:clamp(22px,4vw,44px);perspective:1200px;
+        }
+        .hero-text{
+          position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+          padding:clamp(30px,5vw,62px);border-radius:32px;color:white;
+          background:
+            radial-gradient(circle at 90% 0%,rgba(103,232,249,.25),transparent 28%),
+            linear-gradient(135deg,#171b55 0%,#4338ca 55%,#087eaa 100%);
+          box-shadow:0 28px 60px rgba(49,46,129,.25),inset 0 1px 0 rgba(255,255,255,.23);
+          transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease;
+        }
+        .hero-text:before{
+          content:"";position:absolute;z-index:-1;right:-80px;bottom:-135px;width:340px;height:340px;border-radius:50%;
+          border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 22px rgba(255,255,255,.035),0 0 0 48px rgba(255,255,255,.025);
+        }
+        .hero-text:after{content:"✦";position:absolute;right:12%;top:14%;font-size:70px;color:rgba(255,255,255,.12);text-shadow:0 10px 30px rgba(0,0,0,.15)}
+        .hero-text:hover{transform:translateY(-5px) rotateX(1deg);box-shadow:0 35px 75px rgba(49,46,129,.31),inset 0 1px 0 rgba(255,255,255,.25)}
+        .welcome-tag{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.11);color:#cffafe;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;backdrop-filter:blur(10px)}
+        .hero-text h2{font-size:clamp(30px,4.5vw,52px);line-height:1.12;letter-spacing:-.04em;margin:22px 0 16px;max-width:690px;color:#fff}
+        .hero-text p{max-width:630px;color:#e0e7ff;font-size:clamp(15px,1.5vw,18px);line-height:1.85}
+        .btn{
+          display:inline-flex;align-items:center;justify-content:center;gap:8px;
+          border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:12px 19px;
+          color:white!important;font-weight:750;cursor:pointer;text-decoration:none;
+          background:linear-gradient(135deg,#4f46e5,#0891b2);
+          box-shadow:0 9px 20px rgba(55,48,163,.2);
+          transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;
+        }
+        .btn:hover{transform:translateY(-3px);filter:saturate(1.15);box-shadow:0 15px 28px rgba(55,48,163,.27)}
+        .btn:active{transform:translateY(0) scale(.98)}
+        .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+        .student-card{
+          position:relative;overflow:hidden;padding:28px;border-radius:28px;
+          background:linear-gradient(150deg,rgba(255,255,255,.97),rgba(238,242,255,.87));
+          border:1px solid rgba(129,140,248,.22);
+          box-shadow:0 22px 55px rgba(49,46,129,.13),inset 0 1px 0 #fff;
+          transform:rotateY(-3deg) rotateX(1deg);transition:transform .35s ease,box-shadow .35s ease;
+        }
+        .student-card:before{content:"";position:absolute;right:-50px;top:-65px;width:170px;height:170px;border-radius:50%;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(6,182,212,.12))}
+        .student-card:hover{transform:translateY(-6px) rotateY(0) rotateX(0);box-shadow:var(--premium-shadow-hover)}
+        .student-card img{width:90px;height:90px;object-fit:cover;border-radius:23px;border:4px solid white;box-shadow:0 10px 24px rgba(49,46,129,.2);margin-bottom:14px}
+        .student-card h3{font-size:21px;color:#27266f;margin-bottom:16px}
+        .student-info{position:relative;display:grid;gap:9px}
+        .student-info p{font-size:13px;color:#475467;padding:8px 10px;background:rgba(255,255,255,.75);border:1px solid #e7eaff;border-radius:10px;overflow-wrap:anywhere}
+        .student-info strong{color:#312e81}
+        .dashboard{max-width:1250px;margin:28px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;perspective:1000px}
+        .stat-card{
+          display:flex;align-items:center;gap:16px;padding:22px;border-radius:22px;
+          background:rgba(255,255,255,.88);border:1px solid rgba(129,140,248,.17);
+          box-shadow:0 12px 28px rgba(49,46,129,.09),inset 0 1px 0 white;
+          transition:transform .28s ease,box-shadow .28s ease;transform-style:preserve-3d;
+        }
+        .stat-card:hover{transform:translateY(-7px) rotateX(3deg) rotateY(-2deg);box-shadow:0 23px 42px rgba(49,46,129,.16)}
+        .stat-icon{display:grid;place-items:center;width:54px;height:54px;flex:0 0 54px;border-radius:17px;font-size:25px;background:linear-gradient(145deg,#e0e7ff,#cffafe);box-shadow:inset 0 2px 4px white,0 7px 13px rgba(79,70,229,.12)}
+        .stat-card h3{font-size:28px;line-height:1.2;color:#312e81}
+        .stat-card p{font-size:13px;color:#667085;font-weight:650}
+        .section-title{text-align:center;color:#1e1b4b;font-size:clamp(25px,3vw,36px);letter-spacing:-.035em;margin:0 auto 30px;line-height:1.2}
+        .section-title:after{content:"";display:block;width:68px;height:4px;margin:14px auto 0;border-radius:5px;background:linear-gradient(90deg,#6366f1,#22d3ee);box-shadow:0 3px 8px rgba(79,70,229,.22)}
+        .card-container,.quick-grid,.tools-grid,.resources-grid,.notes-grid{
+          max-width:1250px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:22px;
+        }
+        .card,.quick-card,.tool-card,.resource-card,.note-card,.lab-card{
+          position:relative;isolation:isolate;overflow:hidden;padding:25px;border-radius:22px;
+          background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(245,247,255,.92));
+          border:1px solid rgba(129,140,248,.2);
+          box-shadow:0 12px 28px rgba(31,41,99,.08),inset 0 1px 0 rgba(255,255,255,.95);
+          transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease,border-color .3s ease;
+          transform-style:preserve-3d;
+        }
+        .card:before,.quick-card:before,.tool-card:before,.resource-card:before,.note-card:before,.lab-card:before{
+          content:"";position:absolute;z-index:-1;width:150px;height:150px;right:-85px;top:-90px;border-radius:50%;
+          background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(34,211,238,.12));transition:transform .35s ease;
+        }
+        .card:hover,.quick-card:hover,.tool-card:hover,.resource-card:hover,.note-card:hover,.lab-card:hover{
+          transform:translateY(-8px) rotateX(1.5deg) rotateY(-1deg);
+          border-color:rgba(99,102,241,.4);box-shadow:var(--premium-shadow-hover);
+        }
+        .card:hover:before,.quick-card:hover:before,.tool-card:hover:before,.resource-card:hover:before,.note-card:hover:before,.lab-card:hover:before{transform:scale(1.5)}
+        .card h3,.quick-card h3,.tool-card h3,.resource-card h3,.note-card h3{color:#27266f;font-size:19px;line-height:1.35;margin:10px 0}
+        .card p,.quick-card p,.tool-card p,.resource-card p,.note-card p{color:#667085;font-size:14px;line-height:1.75}
+        .card .btn,.lab-card .btn{margin-top:18px}
+        .quick-card,.tool-card,.resource-card,.note-card{cursor:pointer}
+        .quick-card .icon,.tool-card .icon{display:grid;place-items:center;width:54px;height:54px;border-radius:17px;font-size:27px;background:linear-gradient(145deg,#e0e7ff,#cffafe);box-shadow:0 8px 17px rgba(79,70,229,.12),inset 0 2px 4px white}
+        .experiment-number{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;background:#e0e7ff;color:#3730a3;font-size:11px;font-weight:850;letter-spacing:.08em}
+        .filter-box{max-width:700px;margin:0 auto 24px}
+        .filter-box input{width:100%;border:1px solid rgba(99,102,241,.22);border-radius:15px;background:rgba(255,255,255,.9);padding:14px 17px;box-shadow:0 8px 20px rgba(49,46,129,.06);color:#172033}
+        .lab-intro{max-width:850px;color:var(--muted);margin:0 auto 25px;text-align:center}
+        #lab{background:linear-gradient(180deg,rgba(224,231,255,.2),rgba(207,250,254,.2))}
+        #modules,#tools,#resources,#notes,#about{scroll-margin-top:88px}
+        .flipbook-shell{filter:drop-shadow(0 18px 28px rgba(49,46,129,.1))}
+        .flipbook{border-radius:8px;box-shadow:0 25px 65px rgba(40,36,90,.23)}
+        .flipbook-toolbar button{border-radius:12px}
+        .flipbook-index{border-radius:14px;box-shadow:0 8px 22px rgba(49,46,129,.08)}
+        .experiment-box{border:1px solid rgba(129,140,248,.2);border-radius:24px;box-shadow:var(--premium-shadow);background:rgba(255,255,255,.95)}
+        .experiment-box h2{font-size:clamp(23px,3vw,32px);letter-spacing:-.025em}
+        .experiment-box h3{color:#312e81}
+        .experiment-meta span{background:#e0e7ff;color:#3730a3;border:1px solid #c7d2fe}
+        .experiment-code{border:1px solid #283550;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 18px rgba(15,23,42,.12)}
+        .copy-code-btn{border-radius:9px;box-shadow:0 4px 12px rgba(49,46,129,.1)}
+        footer{background:linear-gradient(125deg,#111c4e,#3730a3 55%,#087eaa)!important;color:#e0e7ff!important;border-radius:28px 28px 0 0;box-shadow:0 -12px 35px rgba(49,46,129,.1)}
+        footer a{color:#a5f3fc!important}
+        body.dark{
+          --background:#0b1020;--card:rgba(20,27,49,.92);--text:#edf2ff;--muted:#a6b2ce;
+          --border:rgba(129,140,248,.22);--light-blue:#171f3b;
+          background:radial-gradient(ellipse at 10% 4%,rgba(79,70,229,.2),transparent 35%),linear-gradient(180deg,#0b1020,#11182c 60%,#0b1020);
+        }
+        body.dark header{background:linear-gradient(125deg,#080d25,#28227d 55%,#07566f)}
+        body.dark .student-card,body.dark .stat-card,body.dark .card,body.dark .quick-card,body.dark .tool-card,body.dark .resource-card,body.dark .note-card,body.dark .lab-card{
+          background:linear-gradient(145deg,rgba(24,32,57,.97),rgba(18,26,47,.94));border-color:rgba(129,140,248,.2);box-shadow:0 16px 36px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.035)
+        }
+        body.dark .student-card h3,body.dark .card h3,body.dark .quick-card h3,body.dark .tool-card h3,body.dark .resource-card h3,body.dark .note-card h3,body.dark .section-title,body.dark .stat-card h3{color:#c7d2fe}
+        body.dark .student-info p{background:rgba(10,15,32,.55);border-color:#303b60;color:#cbd5e1}
+        body.dark .student-info strong{color:#a5f3fc}
+        body.dark .search-box,body.dark .filter-box input{background:#17213a;border-color:#303b60;color:#f8fafc}
+        body.dark .search-box input{color:#f8fafc}
+        body.dark .experiment-box{background:rgba(20,27,49,.97);color:#edf2ff}
+        body.dark .experiment-box h3{color:#c7d2fe;border-color:#35405e}
+        body.dark .experiment-output{background:#111c2c;color:#d1fae5}
+        body.dark .experiment-note{background:#332b1d;color:#fff0c9}
+        body.dark .lab-intro,body.dark .card p,body.dark .quick-card p,body.dark .tool-card p,body.dark .resource-card p,body.dark .note-card p{color:#a6b2ce}
+        @media(max-width:900px){
+          .hero{grid-template-columns:1fr}
+          .student-card{transform:none}
+          .dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}
+          nav ul{gap:2px}
+          nav li a{padding:10px 11px;font-size:12px}
+        }
+        @media(max-width:560px){
+          header{padding:26px 15px 24px;border-radius:0 0 24px 24px}
+          header img{width:70px;height:70px;border-radius:19px}
+          nav{padding:5px}
+          nav ul{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+          nav li{flex:0 0 auto}
+          nav li a{white-space:nowrap;padding:10px 11px}
+          .search-area{padding:20px 12px}
+          .search-box{border-radius:16px}
+          .search-box input{min-width:0;font-size:14px;padding:12px}
+          .search-box button{padding:0 14px;border-radius:12px;font-size:13px}
+          .hero-text{padding:27px 22px;border-radius:24px}
+          .hero-text h2{font-size:32px}
+          .student-card{padding:22px;border-radius:22px}
+          .dashboard{gap:10px}
+          .stat-card{padding:14px;gap:10px;border-radius:17px}
+          .stat-icon{width:42px;height:42px;flex-basis:42px;border-radius:13px;font-size:21px}
+          .stat-card h3{font-size:23px}
+          .stat-card p{font-size:12px}
+          section{padding:34px 14px}
+          .card,.quick-card,.tool-card,.resource-card,.note-card,.lab-card{padding:21px;border-radius:19px}
+          .experiment-box{padding:17px;border-radius:18px}
+          .experiment-code{font-size:12px;padding:13px}
+        }
+        @media(prefers-reduced-motion:reduce){
+          *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+        }
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <img src="mbu-logo.jpg"
+         alt="Mohan Babu University Logo">
+
+    <h1>MOHAN BABU UNIVERSITY</h1>
+
+    <h2>Sub: Data Science</h2>
+
+    <h3>Digital Library</h3>
+
+    <div id="clock"></div>
+
+</header>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <ul>
+
+        <li>
+            <a href="#home">🏠 Home</a>
+        </li>
+
+        <li>
+            <a href="#modules">📚 Modules</a>
+        </li>
+
+        <li>
+            <a href="#tools">🛠 Tools</a>
+        </li>
+
+        <li>
+            <a href="#lab">🧪 Lab</a>
+        </li>
+
+        <li>
+            <a href="#resources">📖 Resources</a>
+        </li>
+
+        <li>
+            <a href="#notes">📝 Notes</a>
+        </li>
+
+        <li>
+            <a href="#about">ℹ️ About</a>
+        </li>
+
+        <li>
+
+            <button
+                class="theme-button"
+                onclick="toggleDarkMode()">
+
+                🌙 Dark Mode
+
+            </button>
+
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================================================
+     GLOBAL SEARCH
+========================================================= -->
+
+<div class="search-area">
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="globalSearch"
+            placeholder="🔍 Search modules, experiments, tools..."
+            onkeyup="globalSearchFunction()">
+
+        <button onclick="globalSearchFunction()">
+            Search
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     HOME
+========================================================= -->
+
+<section id="home">
+
+    <div class="hero">
+
+
+        <!-- LEFT -->
+
+        <div class="hero-text">
+
+            <span class="welcome-tag">
+                🎓 Student Digital Portal
+            </span>
+
+            <h2>
+                Welcome, Bhuvaneswari 👋
+            </h2>
+
+            <p>
+
+                Your personal Data Science Digital Library
+                for accessing modules, laboratory experiments,
+                study tools, notes and useful resources.
+
+            </p>
+
+            <br>
+
+            <a
+                href="#modules"
+                class="btn">
+
+                🚀 Start Learning
+
+            </a>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="student-card">
+
+            <img
+                src="data:image/jpeg;base64,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DzzzDDDDDwAAAACpQHCFrwg0IAsAR4RyDgEEH333kAAAADzzAAAAACAAAAADyELSC9hkIueG0J+olkkAFH33mEAAAADzwAAAAAAAAAAATgYCquUcAgAVEHAVQJCEEEHnEEEAAAADzwAAAAAAAAAABSwCBRUNywEiIWqBhUkQEEEEEEEEAAAADzwAAAAAAAAAABCTDYARIZUQCiIHg4eoQEEEEEEEEAAAADwAAAAAAAAAAABSVRg4iBoAIiMAO5GwBxAEEEEEEEAAAACgAAAAAzzzwChykRjM6lapYgIUD2j/AJCnNJBBBBBBAAAAAoAAAAA888MMYBCE2QcDMyeKArDDCQwCSbRFBBBBVAAAAAgAAAAM88888CPMXS5yEQA4SJRdh4GfE71ARMNBFZAAAAAAAAAM88wgAMzB2KmhBQk4gwhZ5EgLIAqpFAwlNVhAAAAAAAAc88AAAa1ITBgR6BDAEMsV0QBjDTfwlKhgIhBFAAAAAAAc88AAM8UpEQpGeEqhDmgaXYI3jI0LYuywjewRlAAAAUCe++CGO7HjATdjeTBrBFcRbCEkBcVAHDwzIInlHQAAAAAG+CCKjD0RG9iFDbTXSixSBnS6BUaADAaICEoBicqAAAAA+6CWjgsAWZAdR/P6KIJHgQgE6CK5XAAkGH4JCBL7AAAAc+CCifABBdB898/Dj/iigijA8egd8hhgcBdA9++ihAAA/8QAAv/aAAwDAQACAAMAAAAQ88NNNNNNNNNNFJBBBBBBBB1p9999999999999999998888899999999999tNBBBBBBBB19999999999999999998888899999999999xhBBBBBBFNd9999999999999999998888499999999999NJBBBBFNd999999599999999999998888o999999999995hBBBFd995xpZ99t99999999999998888o99999999999pBBBBV991V1Z1Z1999999999999998888o99999999999pBBBV95pUs9z/AM6ZQXffffffffffffPPPKPffffffffffQQQVffWbBP27da57++XbdfffffffffPPPKPffffffffffQQQXffa9vr/wBi99nNe/O+M0m333333zzzyzX333333333EEF333Zvup/trkUDvPUN+WE03n3333zzzzxX333333mHEEF338T7xf1WfVxUej+XcXu3HWHH333zzzzzzzz3332EEEFX3zzbaXxa0kux73P38i8c9n0EHHHHzzzzzzzz332EEEEH33yIX5j+ResmpzW+1n/gf92kEEEEHzzzzwBTzzz0EEEH33yCuq6mb82e/u/jAuD1VrN/mkEEEHzzzzwABTzwEEEFX33xR35tP/ckv8v1fzd/b3729H3kEEHzzzzwAAADQAADz333xD2r1PrLc2vSpd37PT03tnnnW0MPzzzzwAAAAAAADyGn2EjwhSan37i2eTyrST+zb+kV332sPzzzzwAQzwAAADxizzzS79zu2mprrW4lj/L/AJ0e8Mwt1rH88888E888IAAA8408e4+bMF+5/wCIYmpfsIlXOw3nBEfb2/PPPPFPPPPAAHPLDNLqX+e9AtNNP233TvtJNrPebPPff7/PPPOPPPPPAPPPPHDNJNHnff2fn3fQLfMN/EdVqfNP/wD/AP8APPPKPPPPPAPPPPPJFCPekd3nvbA5zLt3jP53GbvGH/8A/wD8888o88888888888sMkrOnfnf7M51UvD76r88+8r/AP8A/wD/APPPPKPPPPPPPPPPPPPLMLmvc1vbpfLL1p+sfuu491//AP8A/wDPPPKPPPPPPPPPPPPPPLPnuZePuj3ASrtnO14Ohf8A/wD/AP8A/wA888o8888888888888487R9h98fYevheW+5tft+/8A/wD/AP8A/PPPKPPPPPPPPPPPOMJPD4K+55UilHnzOdFqGM//AP8A/wD/AP8A8888o888888AAA88AAUsUre97ftMatm9n7cfkD//AP8A/wD/AP8AzzzyjzzzzzwAAADwABDTjcUR95XxD6YH/wCX+UD/AP8A/wD/AP6/PPPKPPPPPAAAAAAAAFPPXHLIPr0ft5e7l/Pv8g//AP8ArXr8888o8888AAM888Aoc4cc0/8Afu/y2R/P6v8Aou84sMPOsMPzzzyjzzwAADzzwwxznrXRvpd7d/y+utNfHVpVp08MMMNfzzzyjzwAAAzzzzzzs977Xjt5bL53r3+/udxfrZ1c48Md/wA888o88AAM8888AMzB8j80L+m6gw56/mm9/Tqsdu2vPX78888o8wAc8888ge3LZ1oT4aTG8O+V+eP/AKv/ABHUyOxjOMfzzzygABzzzzwzxfiRaj/9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"
+                alt="Student Photo">
+
+            <h3>
+                Student Profile
+            </h3>
+
+
+            <div class="student-info">
+
+                <p>
+                    <strong>Name:</strong>
+                    S. Bhuvaneswari
+                </p>
+
+                <p>
+                    <strong>ID:</strong>
+                    24102A030119
+                </p>
+
+                <p>
+                    <strong>Section:</strong>
+                    DS-2
+                </p>
+
+                <p>
+                    <strong>Department:</strong>
+                    Data Science
+                </p>
+
+                <p>
+                    <strong>Degree:</strong>
+                    B.Tech
+                </p>
+
+                <p>
+                    <strong>Faculty:</strong>
+                    S. Bosubabu
+                </p>
+
+                <p>
+                    <strong>Designation:</strong>
+                    Assistant Professor
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <div class="dashboard">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📚
+            </div>
+
+            <div>
+
+                <h3>5</h3>
+
+                <p>Modules</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🧪
+            </div>
+
+            <div>
+
+                <h3>10</h3>
+
+                <p>Experiments</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🛠️
+            </div>
+
+            <div>
+
+                <h3>8+</h3>
+
+                <p>Study Tools</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⭐
+            </div>
+
+            <div>
+
+                <h3 id="favoriteCount">
+                    0
+                </h3>
+
+                <p>Favorites</p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUICK ACCESS
+========================================================= -->
+
+<section id="quick">
+
+    <h2 class="section-title">
+        ⚡ Quick Access
+    </h2>
+
+
+    <div class="quick-grid">
+
+
+        <div
+            class="quick-card"
+            onclick="location.href='#modules'">
+
+            <div class="icon">
+                📚
+            </div>
+
+            <h3>
+                Modules
+            </h3>
+
+            <p>
+                Open your study modules
+            </p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="location.href='#lab'">
+
+            <div class="icon">
+                🧪
+            </div>
+
+            <h3>
+                Laboratory
+            </h3>
+
+            <p>
+                View practical experiments
+            </p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="location.href='#tools'">
+
+            <div class="icon">
+                🧮
+            </div>
+
+            <h3>
+                Study Tools
+            </h3>
+
+            <p>
+                Calculator and timer
+            </p>
+
+        </div>
+
+
+        <div
+            class="quick-card"
+            onclick="location.href='#notes'">
+
+            <div class="icon">
+                📝
+            </div>
+
+            <h3>
+                My Notes
+            </h3>
+
+            <p>
+                Write and save notes
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROGRESS
+========================================================= -->
+
+<section>
+
+    <h2 class="section-title">
+        📈 My Learning Progress
+    </h2>
+
+
+    <div class="progress-section">
+
+
+        <div class="progress-item">
+
+            <div class="progress-label">
+
+                <span>
+                    📚 Modules
+                </span>
+
+                <span>
+                    80%
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width:80%">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-item">
+
+            <div class="progress-label">
+
+                <span>
+                    🧪 Laboratory
+                </span>
+
+                <span>
+                    60%
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width:60%">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-item">
+
+            <div class="progress-label">
+
+                <span>
+                    💻 Programming
+                </span>
+
+                <span>
+                    70%
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width:70%">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-item">
+
+            <div class="progress-label">
+
+                <span>
+                    🎯 Overall
+                </span>
+
+                <span>
+                    70%
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width:70%">
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NOTICE
+========================================================= -->
+
+<section>
+
+    <div class="notice">
+
+        <strong>
+            📢 Digital Library Notice:
+        </strong>
+
+        Use this portal to organize your Data Science
+        modules, laboratory programs, notes and study resources.
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODULES
+========================================================= -->
+
+<section id="modules">
+
+    <h2 class="section-title">
+        📚 Learning Modules
+    </h2>
+
+
+    <div class="filter-box">
+
+        <input
+            type="text"
+            id="moduleSearch"
+            placeholder="🔍 Search modules..."
+            onkeyup="filterModules()">
+
+    </div>
+
+
+    <div class="card-container" id="moduleContainer">
+        <div class="card module-card">
+            <button class="favorite" onclick="favorite(this)" title="Add to favorites">☆</button>
+            <span class="book-label">CHAPTER 01</span>
+            <h3>Module 1: Introduction</h3>
+            <p>Data science foundations, data types, preprocessing, and the major forms of analysis.</p>
+            <button class="btn" onclick="openModuleNotes(1)">📖 Read Book-Style Notes</button>
+        </div>
+        <div class="card module-card">
+            <button class="favorite" onclick="favorite(this)" title="Add to favorites">☆</button>
+            <span class="book-label">CHAPTER 02</span>
+            <h3>Module 2: Data Extraction</h3>
+            <p>Feature selection, entropy, decision trees, random forests, dimensionality reduction, SVD, and PCA.</p>
+            <button class="btn" onclick="openModuleNotes(2)">📖 Read Book-Style Notes</button>
+        </div>
+        <div class="card module-card">
+            <button class="favorite" onclick="favorite(this)" title="Add to favorites">☆</button>
+            <span class="book-label">CHAPTER 03</span>
+            <h3>Module 3: Data Visualization</h3>
+            <p>Visual storytelling with Matplotlib, Pandas, Seaborn, and other Python tools.</p>
+            <button class="btn" onclick="openModuleNotes(3)">📖 Read Book-Style Notes</button>
+        </div>
+        <div class="card module-card">
+            <button class="favorite" onclick="favorite(this)" title="Add to favorites">☆</button>
+            <span class="book-label">CHAPTER 04</span>
+            <h3>Module 4: Statistical Thinking</h3>
+            <p>Distributions, histograms, PMFs, CDFs, percentiles, random numbers, and distribution models.</p>
+            <button class="btn" onclick="openModuleNotes(4)">📖 Read Book-Style Notes</button>
+        </div>
+        <div class="card module-card">
+            <button class="favorite" onclick="favorite(this)" title="Add to favorites">☆</button>
+            <span class="book-label">CHAPTER 05</span>
+            <h3>Module 5: Time Series & Predictive Modeling</h3>
+            <p>Time-ordered data, moving averages, serial correlation, model evaluation, and sentiment analysis.</p>
+            <button class="btn" onclick="openModuleNotes(5)">📖 Read Book-Style Notes</button>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="moduleNotes" aria-live="polite">
+  <div class="flipbook-shell">
+    <div class="flipbook-toolbar">
+      <div class="toolbar-left">
+        <button class="btn" onclick="closeModuleNotes()">← Back to Modules</button>
+      </div>
+      <div class="flipbook-status" id="flipbookStatus">Opening book…</div>
+      <div class="toolbar-right">
+        <button class="btn" id="prevPageBtn" onclick="turnBookPage(-1)">← Previous</button>
+        <button class="btn" id="nextPageBtn" onclick="turnBookPage(1)">Next →</button>
+      </div>
+    </div>
+    <div class="flipbook" id="flipbook" aria-label="Open textbook with facing pages">
+      <article class="flip-page left" id="leftPage"></article>
+      <article class="flip-page right" id="rightPage"></article>
+    </div>
+    <div class="flipbook-index" id="bookIndex"></div>
+    <div class="flipbook-actions">
+      <button class="btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+      <button class="btn" onclick="closeModuleNotes()">← Back to Modules</button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- =========================================================
+     TOOLS
+========================================================= -->
+
+<section id="tools">
+
+    <h2 class="section-title">
+        🛠️ Study Tools
+    </h2>
+
+
+    <div class="card-container">
+
+
+        <div class="card tool-card">
+
+            <div class="tool-icon">
+                🧮
+            </div>
+
+            <h3>
+                Calculator
+            </h3>
+
+            <p>
+                Perform basic calculations
+                without leaving the portal.
+            </p>
+
+            <button
+                class="btn"
+                onclick="showCalculator()">
+
+                Open Calculator
+
+            </button>
+
+        </div>
+
+
+        <div class="card tool-card">
+
+            <div class="tool-icon">
+                ⏱️
+            </div>
+
+            <h3>
+                Study Timer
+            </h3>
+
+            <p>
+                Use a simple timer for
+                focused study sessions.
+            </p>
+
+            <button
+                class="btn"
+                onclick="document.getElementById('timerSection').scrollIntoView()">
+
+                Start Timer
+
+            </button>
+
+        </div>
+
+
+        <div class="card tool-card">
+
+            <div class="tool-icon">
+                💻
+            </div>
+
+            <h3>
+                Java Compiler
+            </h3>
+
+            <p>
+                Practice Java programming
+                online.
+            </p>
+
+            <a
+                href="https://www.jdoodle.com/online-java-compiler"
+                target="_blank"
+                class="btn">
+
+                Open
+
+            </a>
+
+        </div>
+
+
+        <div class="card tool-card">
+
+            <div class="tool-icon">
+                🗄️
+            </div>
+
+            <h3>
+                SQL Learning
+            </h3>
+
+            <p>
+                Learn and practice SQL
+                queries.
+            </p>
+
+            <a
+                href="https://www.w3schools.com/sql/"
+                target="_blank"
+                class="btn">
+
+                Open
+
+            </a>
+
+        </div>
+
+
+        <div class="card tool-card">
+
+            <div class="tool-icon">
+                🔗
+            </div>
+
+            <h3>
+                GitHub
+            </h3>
+
+            <p>
+                Manage your coding projects
+                and repositories.
+            </p>
+
+            <a
+                href="https://github.com/suravarapubhuvana04-cmyk"
+                target="_blank"
+                class="btn">
+
+                My GitHub
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- CALCULATOR -->
+
+    <div
+        id="calculatorSection"
+        style="display:none; margin-top:40px;">
+
+        <h2 class="section-title">
+            🧮 Calculator
+        </h2>
+
+
+        <div class="calculator">
+
+            <input
+                type="text"
+                id="calcDisplay"
+                class="calc-display"
+                readonly>
+
+
+            <div class="calc-buttons">
+
+                <button onclick="clearCalc()">
+                    C
+                </button>
+
+                <button onclick="deleteCalc()">
+                    DEL
+                </button>
+
+                <button onclick="addCalc('/')">
+                    ÷
+                </button>
+
+                <button onclick="addCalc('*')">
+                    ×
+                </button>
+
+
+                <button onclick="addCalc('7')">
+                    7
+                </button>
+
+                <button onclick="addCalc('8')">
+                    8
+                </button>
+
+                <button onclick="addCalc('9')">
+                    9
+                </button>
+
+                <button onclick="addCalc('-')">
+                    −
+                </button>
+
+
+                <button onclick="addCalc('4')">
+                    4
+                </button>
+
+                <button onclick="addCalc('5')">
+                    5
+                </button>
+
+                <button onclick="addCalc('6')">
+                    6
+                </button>
+
+                <button onclick="addCalc('+')">
+                    +
+                </button>
+
+
+                <button onclick="addCalc('1')">
+                    1
+                </button>
+
+                <button onclick="addCalc('2')">
+                    2
+                </button>
+
+                <button onclick="addCalc('3')">
+                    3
+                </button>
+
+                <button onclick="calculate()">
+                    =
+                </button>
+
+
+                <button onclick="addCalc('0')">
+                    0
+                </button>
+
+                <button onclick="addCalc('.')">
+                    .
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TIMER
+========================================================= -->
+
+<section id="timerSection">
+
+    <h2 class="section-title">
+        ⏱️ Study Timer
+    </h2>
+
+
+    <div class="timer">
+
+        <p>
+            Focus on your studies for 25 minutes.
+        </p>
+
+
+        <div
+            class="timer-display"
+            id="timerDisplay">
+
+            25:00
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="startTimer()">
+
+            ▶ Start
+
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="pauseTimer()">
+
+            ⏸ Pause
+
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="resetTimer()">
+
+            🔄 Reset
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TODO LIST
+========================================================= -->
+
+<section>
+
+    <h2 class="section-title">
+        ✅ My Study Tasks
+    </h2>
+
+
+    <div class="todo">
+
+        <div class="todo-input">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter your study task...">
+
+            <button
+                class="btn"
+                onclick="addTask()">
+
+                Add
+
+            </button>
+
+        </div>
+
+
+        <ul id="taskList"></ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LABORATORY
+========================================================= -->
+
+<section id="lab">
+  <h2 class="section-title">🧪 Data Science Laboratory</h2>
+  <p class="lab-intro">Five practical experiments from the uploaded Data Science lab programs. Open any experiment to read its aim, complete Python program, sample output, and result.</p>
+  <div class="filter-box">
+    <input type="text" id="labSearch" placeholder="🔍 Search experiments or topics..." onkeyup="filterLabs()">
+  </div>
+  <div class="card-container" id="labContainer">
+    <div class="card lab-card"><span class="experiment-number">EXP 1</span><h3>Working with Different Data Formats</h3><p>Read and write CSV, JSON, and Excel data using Pandas.</p><button class="btn" onclick="showExperiment(1)">View Experiment</button></div>
+    <div class="card lab-card"><span class="experiment-number">EXP 2</span><h3>Web APIs and Databases</h3><p>Retrieve GitHub issues into a DataFrame and perform SQLite operations.</p><button class="btn" onclick="showExperiment(2)">View Experiment</button></div>
+    <div class="card lab-card"><span class="experiment-number">EXP 3</span><h3>Data Cleaning and Preparation</h3><p>Handle missing values, transform data, detect outliers, and manipulate text with regex.</p><button class="btn" onclick="showExperiment(3)">View Experiment</button></div>
+    <div class="card lab-card"><span class="experiment-number">EXP 4</span><h3>Data Wrangling</h3><p>Use hierarchical indexing, stack/unstack, and combine_first.</p><button class="btn" onclick="showExperiment(4)">View Experiment</button></div>
+    <div class="card lab-card"><span class="experiment-number">EXP 5</span><h3>Data Visualization with Matplotlib and Seaborn</h3><p>Create line, bar, histogram/density, scatter, and box plots.</p><button class="btn" onclick="showExperiment(5)">View Experiment</button></div>
+  </div>
+</section>
+
+<section id="experimentViewer">
+
+    <div
+        class="experiment-box"
+        id="experimentContent">
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESOURCES
+========================================================= -->
+
+<section id="resources">
+
+    <h2 class="section-title">
+        📖 Digital Library Resources
+    </h2>
+
+
+    <div class="resource-grid">
+
+
+        <div class="resource">
+
+            <div class="resource-icon">
+                📚
+            </div>
+
+            <h3>
+                E-Books
+            </h3>
+
+            <p>
+                Access digital books and
+                study materials.
+            </p>
+
+            <a
+                href="https://idp.mbu.asia/"
+                target="_blank"
+                class="btn">
+
+                Open Resource
+
+            </a>
+
+        </div>
+
+
+        <div class="resource">
+
+            <div class="resource-icon">
+                📄
+            </div>
+
+            <h3>
+                E-Journals
+            </h3>
+
+            <p>
+                Explore electronic journals
+                and research resources.
+            </p>
+
+            <a
+                href="https://idp.mbu.asia/"
+                target="_blank"
+                class="btn">
+
+                Open Resource
+
+            </a>
+
+        </div>
+
+
+        <div class="resource">
+
+            <div class="resource-icon">
+                🔎
+            </div>
+
+            <h3>
+                Library OPAC
+            </h3>
+
+            <p>
+                Find books and other
+                library resources.
+            </p>
+
+            <a
+                href="https://www.mbu.asia/central-library/"
+                target="_blank"
+                class="btn">
+
+                Library
+
+            </a>
+
+        </div>
+
+
+        <div class="resource">
+
+            <div class="resource-icon">
+                🎓
+            </div>
+
+            <h3>
+                Data Science
+            </h3>
+
+            <p>
+                Explore the MBU Data Science
+                department resources.
+            </p>
+
+            <a
+                href="https://www.mbu.asia/school-of-computing/dept-of-data-sciences/"
+                target="_blank"
+                class="btn">
+
+                Open
+
+            </a>
+
+        </div>
+
+
+        <div class="resource">
+
+            <div class="resource-icon">
+                💻
+            </div>
+
+            <h3>
+                Python
+            </h3>
+
+            <p>
+                Practice Python programming
+                for Data Science.
+            </p>
+
+            <a
+                href="https://www.w3schools.com/python/"
+                target="_blank"
+                class="btn">
+
+                Learn
+
+            </a>
+
+        </div>
+
+
+        <div class="resource">
+
+            <div class="resource-icon">
+                📊
+            </div>
+
+            <h3>
+                Pandas
+            </h3>
+
+            <p>
+                Learn data manipulation
+                and analysis.
+            </p>
+
+            <a
+                href="https://pandas.pydata.org/docs/"
+                target="_blank"
+                class="btn">
+
+                Learn
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NOTES
+========================================================= -->
+
+<section id="notes">
+
+    <h2 class="section-title">
+        📝 My Personal Notes
+    </h2>
+
+
+    <div class="notes-box">
+
+        <textarea
+            id="notesArea"
+            placeholder="Write your Data Science notes here..."></textarea>
+
+
+        <br><br>
+
+
+        <button
+            class="btn"
+            onclick="saveNotes()">
+
+            💾 Save Notes
+
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="clearNotes()">
+
+            🗑 Clear Notes
+
+        </button>
+
+
+        <p
+            id="notesMessage"
+            style="margin-top:15px; color:green;">
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about">
+
+    <h2 class="section-title">
+        ℹ️ About This Digital Library
+    </h2>
+
+
+    <div class="about-box">
+
+        <p>
+
+            This Data Science Digital Library is a
+            student-focused academic portal designed
+            to organize learning materials, laboratory
+            experiments, notes and useful study tools
+            in one place.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            The portal is designed for easy access to
+            Data Science learning resources and practical
+            programming activities.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            <strong>
+                Student:
+            </strong>
+
+            S. Bhuvaneswari
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Department:
+            </strong>
+
+            Data Science
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                University:
+            </strong>
+
+            Mohan Babu University
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            MOHAN BABU UNIVERSITY
+        </strong>
+    </p>
+
+    <p>
+        Sub: Data Science | Digital Library
+    </p>
+
+    <p>
+        Student: S. Bhuvaneswari |
+        ID: 24102A030119
+    </p>
+
+    <p>
+        © 2026 Data Science Digital Library
+    </p>
+
+</footer>
+
+
+<!-- BACK TO TOP -->
+
+<button
+    id="topButton"
+    onclick="window.scrollTo(0,0)">
+
+    ↑
+
+</button>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   DIGITAL CLOCK
+========================================================= */
+
+function updateClock() {
+
+    const now = new Date();
+
+    const date =
+        now.toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+    const time =
+        now.toLocaleTimeString();
+
+    document.getElementById("clock").innerHTML =
+        "📅 " + date + " | 🕐 " + time;
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+    if (
+        document.body.classList.contains("dark")
+    ) {
+
+        localStorage.setItem(
+            "darkMode",
+            "enabled"
+        );
+
+    }
+
+    else {
+
+        localStorage.setItem(
+            "darkMode",
+            "disabled"
+        );
+
+    }
+
+}
+
+
+if (
+    localStorage.getItem("darkMode")
+    ===
+    "enabled"
+) {
+
+    document.body.classList.add("dark");
+
+}
+
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+let favoriteNumber = 0;
+
+
+function favorite(button) {
+
+    if (
+        button.innerHTML.trim()
+        ===
+        "☆"
+    ) {
+
+        button.innerHTML = "⭐";
+
+        favoriteNumber++;
+
+    }
+
+    else {
+
+        button.innerHTML = "☆";
+
+        favoriteNumber--;
+
+    }
+
+
+    document.getElementById(
+        "favoriteCount"
+    ).innerText =
+        favoriteNumber;
+
+}
+
+
+
+/* =========================================================
+   MODULE SEARCH
+========================================================= */
+
+function filterModules() {
+
+    const search =
+        document
+        .getElementById("moduleSearch")
+        .value
+        .toLowerCase();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".module-card"
+        );
+
+
+    cards.forEach(
+        function(card) {
+
+            const text =
+                card.innerText
+                .toLowerCase();
+
+
+            if (
+                text.includes(search)
+            ) {
+
+                card.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   LAB SEARCH
+========================================================= */
+
+function filterLabs() {
+
+    const search =
+        document
+        .getElementById("labSearch")
+        .value
+        .toLowerCase();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".lab-card"
+        );
+
+
+    cards.forEach(
+        function(card) {
+
+            const text =
+                card.innerText
+                .toLowerCase();
+
+
+            if (
+                text.includes(search)
+            ) {
+
+                card.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   GLOBAL SEARCH
+========================================================= */
+
+function globalSearchFunction() {
+
+    const search =
+        document
+        .getElementById("globalSearch")
+        .value
+        .toLowerCase();
+
+
+    const allCards =
+        document.querySelectorAll(
+            ".module-card, .lab-card, .resource, .tool-card"
+        );
+
+
+    allCards.forEach(
+        function(card) {
+
+            const text =
+                card.innerText
+                .toLowerCase();
+
+
+            if (
+                text.includes(search)
+                ||
+                search === ""
+            ) {
+
+                card.style.display =
+                    "";
+
+            }
+
+            else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+function showCalculator() {
+
+    const calculator =
+        document.getElementById(
+            "calculatorSection"
+        );
+
+
+    calculator.style.display =
+        "block";
+
+
+    calculator.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+function addCalc(value) {
+
+    document.getElementById(
+        "calcDisplay"
+    ).value += value;
+
+}
+
+
+function clearCalc() {
+
+    document.getElementById(
+        "calcDisplay"
+    ).value = "";
+
+}
+
+
+function deleteCalc() {
+
+    let display =
+        document.getElementById(
+            "calcDisplay"
+        );
+
+
+    display.value =
+        display.value.slice(0,-1);
+
+}
+
+
+function calculate() {
+
+    let display =
+        document.getElementById(
+            "calcDisplay"
+        );
+
+
+    try {
+
+        display.value =
+            eval(display.value);
+
+    }
+
+    catch {
+
+        display.value =
+            "Error";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   STUDY TIMER
+========================================================= */
+
+let timeLeft = 25 * 60;
+
+let timerInterval = null;
+
+
+function updateTimerDisplay() {
+
+    let minutes =
+        Math.floor(
+            timeLeft / 60
+        );
+
+    let seconds =
+        timeLeft % 60;
+
+
+    document.getElementById(
+        "timerDisplay"
+    ).innerText =
+
+        String(minutes)
+        .padStart(2,"0")
+        +
+        ":"
+        +
+        String(seconds)
+        .padStart(2,"0");
+
+}
+
+
+function startTimer() {
+
+    if (timerInterval !== null) {
+
+        return;
+
+    }
+
+
+    timerInterval =
+        setInterval(
+            function() {
+
+                if (timeLeft > 0) {
+
+                    timeLeft--;
+
+                    updateTimerDisplay();
+
+                }
+
+                else {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+                    timerInterval = null;
+
+                    alert(
+                        "🎉 Study session completed!"
+                    );
+
+                }
+
+            },
+            1000
+        );
+
+}
+
+
+function pauseTimer() {
+
+    clearInterval(
+        timerInterval
+    );
+
+    timerInterval = null;
+
+}
+
+
+function resetTimer() {
+
+    pauseTimer();
+
+    timeLeft = 25 * 60;
+
+    updateTimerDisplay();
+
+}
+
+
+updateTimerDisplay();
+
+
+
+/* =========================================================
+   TODO LIST
+========================================================= */
+
+let tasks =
+    JSON.parse(
+        localStorage.getItem("tasks")
+    )
+    ||
+    [];
+
+
+function displayTasks() {
+
+    const list =
+        document.getElementById(
+            "taskList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    tasks.forEach(
+        function(task,index) {
+
+            const li =
+                document.createElement("li");
+
+
+            li.innerHTML = `
+
+                <span>
+                    ${task}
+                </span>
+
+                <button
+                    onclick="deleteTask(${index})">
+
+                    Delete
+
+                </button>
+
+            `;
+
+
+            list.appendChild(li);
+
+        }
+    );
+
+}
+
+
+function addTask() {
+
+    const input =
+        document.getElementById(
+            "taskInput"
+        );
+
+
+    const task =
+        input.value.trim();
+
+
+    if (task === "") {
+
+        alert(
+            "Please enter a task."
+        );
+
+        return;
+
+    }
+
+
+    tasks.push(task);
+
+
+    localStorage.setItem(
+        "tasks",
+        JSON.stringify(tasks)
+    );
+
+
+    input.value = "";
+
+
+    displayTasks();
+
+}
+
+
+function deleteTask(index) {
+
+    tasks.splice(
+        index,
+        1
+    );
+
+
+    localStorage.setItem(
+        "tasks",
+        JSON.stringify(tasks)
+    );
+
+
+    displayTasks();
+
+}
+
+
+displayTasks();
+
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+const notesArea =
+    document.getElementById(
+        "notesArea"
+    );
+
+
+notesArea.value =
+    localStorage.getItem(
+        "studentNotes"
+    )
+    ||
+    "";
+
+
+function saveNotes() {
+
+    localStorage.setItem(
+        "studentNotes",
+        notesArea.value
+    );
+
+
+    document.getElementById(
+        "notesMessage"
+    ).innerText =
+        "✅ Notes saved successfully!";
+
+}
+
+
+function clearNotes() {
+
+    if (
+        confirm(
+            "Are you sure you want to clear your notes?"
+        )
+    ) {
+
+        notesArea.value = "";
+
+        localStorage.removeItem(
+            "studentNotes"
+        );
+
+
+        document.getElementById(
+            "notesMessage"
+        ).innerText =
+            "Notes cleared.";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   EXPERIMENT VIEWER
+========================================================= */
+
+
+const labExperiments = {"1": {"title": "Working with Different Data Formats using Pandas", "aim": "To read and write CSV, JSON, and Excel files using the Pandas library.", "requirements": "Python 3, pandas, and openpyxl for Excel support. The CSV example reads a sample file from a URL, so internet access is required for that step.", "sections": [{"title": "A. Reading and Writing CSV Data", "program": "import pandas as pd\n\n# Read CSV file from URL\nurl = 'https://people.sc.fsu.edu/~jburkardt/data/csv/hw_200.csv'\ndf = pd.read_csv(url)\nprint(df.head())\n\n# Write DataFrame to a CSV file\ndf.to_csv('output.csv', index=False)\nprint('CSV file saved as output.csv')", "output": "Displays the first five rows from the CSV file. Then saves the DataFrame to output.csv without writing the DataFrame index.", "result": "CSV data was read into a DataFrame and written to a CSV file."}, {"title": "B. Reading and Writing JSON Data", "program": "import pandas as pd\n\n# Convert a DataFrame to JSON and back\njson_data = df.to_json()\ndf_json = pd.read_json(json_data)\nprint(df_json.head())\n\n# Optional: save JSON data to a file\ndf.to_json('output.json')", "output": "Displays the first five rows of the DataFrame reconstructed from JSON. The optional line saves JSON data to output.json.", "result": "The DataFrame was converted to JSON and read back into Pandas."}, {"title": "C. Reading and Writing Excel Files", "program": "import pandas as pd\n\n# Save and load Excel files\ndf.to_excel('output.xlsx', index=False)\ndf_excel = pd.read_excel('output.xlsx')\nprint(df_excel.head())", "output": "Displays the first five rows loaded from output.xlsx.", "result": "The DataFrame was saved to and loaded from an Excel workbook."}]}, "2": {"title": "Interacting with Web APIs and Databases", "aim": "To retrieve data from a web API, convert the response into a Pandas DataFrame, and perform basic SQLite database operations.", "requirements": "Python 3, pandas, and requests. The GitHub API section needs internet access; SQLite is included with Python.", "sections": [{"title": "A. GitHub Issues to DataFrame", "program": "import requests\nimport pandas as pd\n\nurl = 'https://api.github.com/repos/pandas-dev/pandas/issues'\nresponse = requests.get(url, timeout=30)\nresponse.raise_for_status()\nissues = response.json()\n\ndf_issues = pd.DataFrame(issues)\nprint(df_issues[['id', 'title', 'state', 'created_at']].head())", "output": "Prints the id, title, state, and created_at columns for the first five issues returned by the GitHub API. The API response can change over time.", "result": "The JSON response from GitHub was converted into a DataFrame for inspection."}, {"title": "B. SQLite Database Operations", "program": "import sqlite3\nimport pandas as pd\n\n# Connect to a database file (created if it does not exist)\nconn = sqlite3.connect('students.db')\ncursor = conn.cursor()\n\n# Create a table\ncursor.execute('CREATE TABLE IF NOT EXISTS students (id INTEGER, name TEXT)')\n\n# Insert sample rows without duplicating IDs on reruns\ncursor.execute('INSERT OR REPLACE INTO students VALUES (?, ?)', (1, 'John'))\ncursor.execute('INSERT OR REPLACE INTO students VALUES (?, ?)', (2, 'Joy'))\nconn.commit()\n\n# Read data into a DataFrame\ndf_students = pd.read_sql_query('SELECT * FROM students', conn)\nprint(df_students)\n\n# Update and delete examples\ncursor.execute(\"UPDATE students SET name = ? WHERE id = ?\", ('Alice', 1))\ncursor.execute('DELETE FROM students WHERE id = ?', (1,))\nconn.commit()\n\nconn.close()", "output": "The initial query displays the two sample student records. The update changes id 1 to Alice, and the delete then removes id 1 from the database.", "result": "Records were inserted, queried, updated, and deleted using SQLite. Parameterized SQL is used for values."}]}, "3": {"title": "Data Cleaning and Preparation", "aim": "To identify and handle missing data, transform values, detect possible outliers, and split text using regular expressions.", "requirements": "Python 3, pandas, and NumPy.", "sections": [{"title": "A. Handle Missing Data", "program": "import numpy as np\nimport pandas as pd\n\ndata = {'A': [1, 2, np.nan], 'B': [4, np.nan, np.nan]}\ndf = pd.DataFrame(data)\nprint('Missing-value mask:')\nprint(df.isna())\n\ndf_clean = df.dropna()\ndf_filled = df.fillna(0)\nprint('\\nRows after dropna():')\nprint(df_clean)\nprint('\\nAfter filling missing values with 0:')\nprint(df_filled)", "output": "The missing-value mask marks missing cells as True. dropna() keeps only rows with no missing values; fillna(0) replaces missing cells with zero.", "result": "Missing values were identified and handled using dropna() and fillna()."}, {"title": "B. Data Transformation", "program": "import pandas as pd\n\ndf = pd.DataFrame({'gender': ['male', 'female', 'male']})\ndf['gender_num'] = df['gender'].map({'male': 0, 'female': 1})\ndf_renamed = df.rename(columns={'gender': 'Gender'})\nprint(df_renamed)", "output": "The result has columns Gender and gender_num. The values male and female are mapped to 0 and 1 respectively.", "result": "Categorical values were mapped to numeric codes and a column was renamed."}, {"title": "C. Outlier Detection", "program": "import numpy as np\nimport pandas as pd\n\n# Generate sample numeric data\ndata = pd.DataFrame(np.random.randn(100, 3), columns=['A', 'B', 'C'])\n# Flag values outside the interval [-3, 3]\noutliers = (data > 3) | (data < -3)\nprint('Potential outliers per column:')\nprint(outliers.sum())", "output": "Prints the count of values below -3 or above 3 in each column. Because the data is random, counts can differ each run.", "result": "Potential extreme values were flagged using a simple threshold rule."}, {"title": "D. Regex for Text Manipulation", "program": "import re\n\ntext = 'This is\\t a\\n test'\nsplit_text = re.split(r'\\s+', text.strip())\nprint(split_text)", "output": "['This', 'is', 'a', 'test']", "result": "The text was split wherever one or more whitespace characters occurred."}]}, "4": {"title": "Data Wrangling", "aim": "To perform hierarchical indexing, rearrange data using stack and unstack, and combine DataFrames using combine_first.", "requirements": "Python 3, pandas, and NumPy.", "sections": [{"title": "A. Hierarchical Indexing", "program": "import pandas as pd\nimport numpy as np\n\ndata = pd.Series(\n    np.random.randn(6),\n    index=[['a', 'a', 'b', 'b', 'c', 'c'], [1, 2, 1, 2, 1, 2]]\n)\nprint('Complete Series:')\nprint(data)\nprint(\"\\nOuter-level selection data['b']:\")\nprint(data['b'])\nprint('\\nInner-level selection data[:, 1]:')\nprint(data[:, 1])", "output": "Creates a Series with two index levels. data['b'] selects the rows in outer group b; data[:, 1] selects entries with inner index 1.", "result": "Hierarchical indexing was created and subsets were selected using partial indexing."}, {"title": "B. Stack and Unstack", "program": "# Continue from the Series named data in section A\ndf = data.unstack()\nprint('After unstack():')\nprint(df)\nprint('\\nAfter stack():')\nprint(df.stack())", "output": "unstack() moves an index level into columns to form a DataFrame. stack() moves columns back into an inner index level.", "result": "Hierarchical data was rearranged using unstack() and stack()."}, {"title": "C. Merge and Combine with combine_first", "program": "import pandas as pd\nimport numpy as np\n\ndf1 = pd.DataFrame({'a': [1, np.nan, 3], 'b': [4, 5, 6]})\ndf2 = pd.DataFrame({'a': [7, 8, 9], 'b': [np.nan, 11, 12]})\n\ncombined = df1.combine_first(df2)\nprint(combined)", "output": "       a    b\n0    1.0  4.0\n1    8.0  5.0\n2    3.0  6.0\n\ncombine_first() fills missing cells in the first DataFrame using matching values from the second DataFrame.", "result": "The two DataFrames were combined by index and column labels, preferring non-missing values from the first DataFrame."}]}, "5": {"title": "Data Visualization with Matplotlib and Seaborn", "aim": "To visualize data using line plots, bar plots, histograms with density curves, scatter plots, and box plots.", "requirements": "Python 3, pandas, NumPy, Matplotlib, and Seaborn. Install packages with: pip install pandas numpy matplotlib seaborn.", "sections": [{"title": "A. Line Plot with Labels, Ticks, Annotation, and Save", "program": "import matplotlib.pyplot as plt\n\nx = [1, 2, 3, 4]\ny = [10, 20, 25, 30]\n\nfig, ax = plt.subplots()\nax.plot(x, y, marker='o')\nax.set_title('Line Plot')\nax.set_xlabel('X-axis')\nax.set_ylabel('Y-axis')\nax.set_xticks(x)\nax.set_xticklabels(['One', 'Two', 'Three', 'Four'])\nax.annotate('Highest value', xy=(4, 30), xytext=(2.4, 32),\n            arrowprops={'arrowstyle': '->'})\nax.grid(True)\nfig.tight_layout()\nfig.savefig('line_plot.png', dpi=150)\nplt.show()", "output": "Opens a line chart with points connected by lines and saves it as line_plot.png. The annotation points to the final data point.", "result": "A labeled line plot was created and saved to a file."}, {"title": "B. Bar Plots: Simple, Grouped, and Stacked", "program": "import pandas as pd\nimport matplotlib.pyplot as plt\n\n# Simple bar plot using a DataFrame\nsales = pd.DataFrame({'Category': ['A', 'B', 'C'], 'Values': [10, 20, 15]})\nax = sales.plot(kind='bar', x='Category', y='Values', legend=False, title='Bar Plot')\nax.set_xlabel('Category')\nax.set_ylabel('Values')\nplt.tight_layout()\nplt.show()\n\n# Grouped bars: each series appears side by side\ngrouped = pd.DataFrame({'2025': [10, 15, 8], '2026': [12, 18, 11]},\n                       index=['A', 'B', 'C'])\ngrouped.plot(kind='bar', title='Grouped Bar Plot')\nplt.tight_layout()\nplt.show()\n\n# Stacked bars\nstacked = pd.DataFrame({'Completed': [7, 10, 5], 'Pending': [3, 5, 4]},\n                       index=['A', 'B', 'C'])\nstacked.plot(kind='bar', stacked=True, title='Stacked Bar Plot')\nplt.tight_layout()\nplt.show()", "output": "Displays three figures: a simple bar chart, grouped bars side by side, and a stacked bar chart.", "result": "Categorical values were compared using simple, grouped, and stacked bar plots."}, {"title": "C. Histogram and Density Plot", "program": "import numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nvalues = np.random.randn(1000)\nsns.histplot(values, kde=True)\nplt.title('Histogram and Density')\nplt.xlabel('Value')\nplt.ylabel('Frequency')\nplt.tight_layout()\nplt.show()", "output": "Displays a histogram of 1,000 generated values with a kernel density estimate curve. The random sample varies on each run.", "result": "A histogram and density curve were used to inspect the distribution of numeric data."}, {"title": "D. Scatter Plot", "program": "import numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.random.rand(50)\ny = np.random.rand(50)\nplt.scatter(x, y)\nplt.title('Scatter Plot')\nplt.xlabel('x')\nplt.ylabel('y')\nplt.tight_layout()\nplt.show()", "output": "Displays 50 points on a scatter plot. The random data are for demonstration and do not imply a meaningful relationship.", "result": "A scatter plot was created to examine the relationship between two numeric series."}, {"title": "E. Box Plot for Multiple Variables", "program": "import numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nvalues = np.random.randn(100, 4)\nsns.boxplot(data=values)\nplt.title('Box Plot')\nplt.xlabel('Variable')\nplt.ylabel('Value')\nplt.tight_layout()\nplt.show()", "output": "Displays four box plots, one for each generated column, showing the median, quartiles, whiskers, and any points treated as outliers by the plotting convention.", "result": "Box plots were used to compare the distributions of multiple numeric variables."}]}};
+
+function escapeExperimentHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[ch]);
+}
+
+function showExperiment(number) {
+  const experiment = labExperiments[String(number)];
+  const viewer = document.getElementById("experimentViewer");
+  const content = document.getElementById("experimentContent");
+  if (!experiment || !viewer || !content) return;
+
+  const sections = experiment.sections.map((part, index) => `
+    <div class="experiment-part">
+      <h3>${escapeExperimentHtml(part.title)}</h3>
+      <h4>Program</h4>
+      <div class="experiment-code-wrap">
+        <div class="code-toolbar"><button class="copy-code-btn" onclick="copyExperimentCode(${number}, ${index})">📋 Copy code</button></div>
+        <pre class="experiment-code" id="exp-code-${number}-${index}">${escapeExperimentHtml(part.program)}</pre>
+      </div>
+      <h4>Sample output / expected behavior</h4>
+      <div class="experiment-output">${escapeExperimentHtml(part.output)}</div>
+      <h4>Result</h4>
+      <p>${escapeExperimentHtml(part.result)}</p>
+    </div>`).join("");
+
+  content.innerHTML = `
+    <h2>🧪 Experiment ${number}: ${escapeExperimentHtml(experiment.title)}</h2>
+    <div class="experiment-meta"><span>Data Science · 22DS102006</span><span>Experiment ${number} of 5</span></div>
+    <div class="experiment-part"><h3>Aim</h3><p>${escapeExperimentHtml(experiment.aim)}</p></div>
+    <div class="experiment-note"><strong>Requirements / notes:</strong> ${escapeExperimentHtml(experiment.requirements)}</div>
+    ${sections}
+    <div class="experiment-actions">
+      <button class="btn" onclick="showExperiment(${number === 1 ? 5 : number - 1})" ${number === 1 ? "disabled" : ""}>← Previous experiment</button>
+      <button class="btn" onclick="showExperiment(${number === 5 ? 1 : number + 1})">${number === 5 ? "Back to Experiment 1" : "Next experiment →"}</button>
+      <button class="btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+      <button class="btn" onclick="closeExperiment()">✕ Close</button>
+    </div>`;
+  viewer.style.display = "block";
+  viewer.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+async function copyExperimentCode(experimentNumber, sectionIndex) {
+  const node = document.getElementById(`exp-code-${experimentNumber}-${sectionIndex}`);
+  if (!node) return;
+  const code = node.textContent;
+  try {
+    await navigator.clipboard.writeText(code);
+    const buttons = node.parentElement.querySelectorAll(".copy-code-btn");
+    buttons.forEach(button => {
+      const old = button.textContent;
+      button.textContent = "✓ Copied";
+      setTimeout(() => button.textContent = old, 1300);
+    });
+  } catch (error) {
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    alert("Clipboard access was blocked. The code is selected; press Ctrl+C to copy it.");
+  }
+}
+
+function closeExperiment() {
+  const viewer = document.getElementById("experimentViewer");
+  if (viewer) viewer.style.display = "none";
+  const lab = document.getElementById("lab");
+  if (lab) lab.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+
+function showSubExperiment(number) {
+
+    const all =
+        document.querySelectorAll(
+            ".subexperiment-content"
+        );
+
+
+    all.forEach(
+        function(item) {
+
+            item.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    const selected =
+        document.getElementById(
+            "sub" + number
+        );
+
+
+    if (selected) {
+
+        selected.classList.add(
+            "active"
+        );
+
+
+        selected.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+}
+
+
+
+function closeExperiment() {
+
+    document.getElementById(
+        "experimentViewer"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "lab"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const button =
+            document.getElementById(
+                "topButton"
+            );
+
+
+        if (
+            window.scrollY > 400
+        ) {
+
+            button.style.display =
+                "block";
+
+        }
+
+        else {
+
+            button.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   TEXTBOOK-STYLE NOTES FOR THE FIVE SYLLABUS MODULES
+========================================================= */
+const moduleBooks = {
+1: {
+ title:"Module 1: Introduction", subtitle:"Understanding data science and the analytical process",
+ chapters:[
+ ["1.1 Definition of Data Science",`Data science is an interdisciplinary field that uses scientific methods, statistics, programming, and domain knowledge to collect, prepare, analyze, and interpret data. Its purpose is to discover useful patterns, explain what has happened, predict what may happen, and support decisions.`,`A retail company can analyze sales data to discover popular products, forecast next month's demand, and plan inventory.`],
+ ["1.2 Skills for Data Science",`A data scientist combines several skill groups: programming (often Python or R), statistics and mathematics, data handling with tools such as SQL and Pandas, visualization, machine learning, communication, and domain understanding. Ethical handling of data and clear explanation of results are also important.`,`Technical skills help produce an analysis; communication skills help other people understand and use its conclusions.`],
+ ["1.3 Tools for Data Science",`Common tools include Python and R for analysis; Jupyter Notebook for interactive work; NumPy and Pandas for numerical and tabular data; Matplotlib and Seaborn for charts; SQL for databases; and spreadsheets for quick inspection. The correct tool depends on the size, structure, and purpose of the task.`],
+ ["1.4 Data Types",`Data may be qualitative or quantitative. Qualitative data describes categories, such as colour or department. Quantitative data represents quantities: discrete data is countable (number of calls), while continuous data can take values within a range (temperature). Structured data follows a defined table or schema; semi-structured data includes formats such as JSON; unstructured data includes images, audio, and free text.`],
+ ["1.5 Data Collections",`Data collection is the process of obtaining observations for analysis. Sources include surveys, experiments, sensors, transactions, logs, public datasets, and APIs. A dataset commonly contains rows (records or observations) and columns (variables or features). Sampling, consent, accuracy, representativeness, and privacy affect data quality.`],
+ ["1.6 Data Preprocessing",`Preprocessing prepares raw data for reliable analysis. Typical steps include removing duplicates, correcting data types, handling missing values, identifying inconsistent entries, treating outliers carefully, encoding categories, and scaling numerical features when required. Data should be split appropriately before model training to avoid leakage from test data.`],
+ ["1.7 Data Analysis and Data Analytics",`Data analysis is the process of inspecting and interpreting data to answer a question. Data analytics is the broader practice of using data, methods, tools, and results to support decisions. The terms overlap, but analytics often emphasizes applying insights to actions and organizational goals.`],
+ ["1.8 Descriptive Analysis",`Descriptive analysis summarizes what the available data shows. It uses counts, percentages, averages, medians, ranges, tables, and charts. It describes observed data but does not by itself establish why something happened or guarantee what will happen next.`],
+ ["1.9 Diagnostic Analytics",`Diagnostic analytics investigates why an outcome occurred. Analysts compare groups, inspect trends, drill down into categories, and examine relationships. A discovered association is not automatically proof of causation; alternative explanations and data quality must be considered.`],
+ ["1.10 Predictive Analytics",`Predictive analytics estimates an unknown or future outcome using historical data and a statistical or machine-learning model. Examples include demand forecasting, credit-risk estimation, and predicting customer churn. Predictions have uncertainty and should be evaluated on data not used to train the model.`],
+ ["1.11 Prescriptive Analytics",`Prescriptive analytics recommends actions by combining predictions with objectives, constraints, and decision rules or optimization. For example, after forecasting demand, a system may recommend stock levels that balance shortage risk and storage cost.`],
+ ["1.12 Exploratory Analysis",`Exploratory data analysis (EDA) is an early investigation of a dataset. Analysts inspect distributions, missing values, unusual observations, relationships, and possible patterns using summary statistics and visualizations. EDA helps form questions and hypotheses; findings should be checked rather than treated as final proof.`],
+ ["1.13 Mechanistic Analysis",`Mechanistic analysis seeks to describe the underlying process or mechanism that generates an outcome, often through explicit equations or scientific rules. Unlike a purely predictive model, it attempts to represent how system components produce the observed result. Such models depend on assumptions about the process.`]
+ ]},
+2:{title:"Module 2: Data Extraction",subtitle:"Selecting useful information and reducing complexity",chapters:[
+ ["2.1 Extracting Meaning from Data",`Extracting meaning involves turning raw observations into useful features, patterns, or representations. The workflow may include defining the question, cleaning data, creating or selecting features, choosing a model, evaluating results, and interpreting what the results mean in context.`],
+ ["2.2 Feature Selection",`Feature selection chooses a subset of existing input variables that are most useful for a task. It can reduce computation, improve interpretability, and sometimes reduce overfitting. Feature selection is different from feature extraction, which transforms the original variables into new representations.`],
+ ["2.3 User Retention",`User retention measures the extent to which users return to a product or service over time. A retention analysis defines a cohort and a return event, then measures the proportion of users who return after a specified interval. For example, day-7 retention is the percentage of a cohort that is active seven days after joining. Definitions must be consistent for comparisons to be meaningful.`],
+ ["2.4 Filters",`Filter methods score features using general statistical properties before training a particular model. Examples include correlation, chi-square tests, and information gain. They are often fast and scalable, but a feature's individual score may not capture useful interactions with other features.`],
+ ["2.5 Wrappers",`Wrapper methods evaluate candidate feature subsets by repeatedly training and testing a model. Forward selection adds features, backward elimination removes features, and recursive feature elimination repeatedly removes less useful features. Wrappers can capture model-specific interactions but are computationally expensive and require careful validation.`],
+ ["2.6 Entropy",`Entropy measures uncertainty in a set of class labels. For class probabilities p₁, p₂, …, pₖ, entropy is H = −Σ pᵢ log₂(pᵢ), with terms having pᵢ = 0 treated as zero. Entropy is zero when all examples belong to one class and is larger when classes are more evenly mixed.`,`Example: a perfectly mixed binary set with probabilities 0.5 and 0.5 has entropy 1 bit.`],
+ ["2.7 Decision Tree Algorithm",`A decision tree predicts by asking a sequence of feature-based questions. At each node, the algorithm selects a split that improves the separation of target classes or reduces prediction error. Information gain is the reduction in entropy after a split. Trees are easy to interpret, but deep trees can overfit; pruning and depth limits can help.`],
+ ["2.8 Random Forests",`A random forest combines many decision trees. Each tree is trained using a bootstrap sample, and candidate splits typically consider a random subset of features. Classification often uses majority voting; regression often averages predictions. The ensemble generally reduces the variance of a single tree, although it is less interpretable than one small tree.`],
+ ["2.9 The Dimensionality Problem",`High-dimensional data has many features. As dimensionality grows, data becomes sparse, distances may become less informative, and models may need more observations and computation. Irrelevant features can also increase overfitting. Feature selection and dimensionality-reduction methods are common responses.`],
+ ["2.10 Singular Value Decomposition (SVD)",`SVD factorizes a matrix A into A = UΣVᵀ. The matrices U and V contain orthogonal directions, while Σ contains non-negative singular values ordered by size. Keeping only the largest singular values creates a lower-rank approximation that can compress data or reveal dominant structure.`],
+ ["2.11 Principal Component Analysis (PCA)",`PCA transforms correlated numerical variables into orthogonal principal components. The first component captures the largest possible variance; each later component captures as much remaining variance as possible while being orthogonal to earlier components. Data is commonly centered, and features with different units are often standardized before PCA. PCA is useful for compression and visualization, but components may be harder to interpret.`]
+ ]},
+3:{title:"Module 3: Data Visualization",subtitle:"Communicating patterns through charts",chapters:[
+ ["3.1 A Brief Matplotlib API Primer",`Matplotlib is a Python plotting library. The object-oriented interface uses a Figure (the full canvas) and Axes (the plotting area). Common operations include creating a figure, plotting data, adding a title and axis labels, enabling a grid, adding a legend, and saving the figure.`,`Example: plt.plot(x, y); plt.xlabel("Time"); plt.ylabel("Value"); plt.title("Trend"); plt.show()`],
+ ["3.2 Plotting with Pandas and Seaborn",`Pandas provides convenient plotting methods directly on Series and DataFrames. Seaborn is built on Matplotlib and offers high-level statistical plots with attractive defaults. Pandas is useful for quick plots, while Seaborn is especially useful for exploring distributions and relationships.`],
+ ["3.3 Line Plots",`A line plot connects observations in a meaningful order, often time. It is useful for trends and changes over time. The x-axis order matters; connecting unrelated categories can be misleading. Multiple lines can compare groups, but too many lines may clutter the figure.`],
+ ["3.4 Bar Plots",`A bar plot compares values across discrete categories. Bar lengths represent values, and a zero baseline is generally important because truncated bars can exaggerate differences. Grouped or stacked bars can compare subgroups, provided the design remains readable.`],
+ ["3.5 Histograms and Density Plots",`A histogram divides numerical data into bins and shows how many observations fall in each interval. Its appearance depends on bin width and bin boundaries. A density plot estimates a smooth distribution shape. Histograms are useful for detecting skewness, multiple peaks, and possible outliers; density plots should be interpreted cautiously with small samples.`],
+ ["3.6 Scatter Plots",`A scatter plot places paired numerical observations on two axes. It can reveal positive or negative association, clusters, nonlinear patterns, and unusual points. Correlation does not prove causation, and overlapping points may hide dense regions.`],
+ ["3.7 Facet Grids and Categorical Data",`A facet grid creates a set of similar plots split by one or more categorical variables, making subgroup comparisons easier. Categorical plots may use bars, points, boxes, or violins to compare categories. Keep scales and category ordering consistent when comparisons are intended.`],
+ ["3.8 Other Python Visualization Tools",`Other tools include Plotly for interactive charts, Altair for declarative statistical graphics, Bokeh for browser-based visualizations, and tools such as GeoPandas for spatial data. Select a tool based on whether the output needs interactivity, publication-quality static figures, maps, or dashboard integration.`],
+ ["3.9 Principles of Good Visualization",`A good chart has a clear purpose, descriptive title, labeled axes, appropriate scales, readable text, and a chart type suited to the data. Avoid unnecessary decoration, misleading axes, excessive colours, and 3-D effects that obscure values. Include units and explain uncertainty when relevant.`]
+ ]},
+4:{title:"Module 4: Statistical Thinking",subtitle:"Summarizing uncertainty and understanding distributions",chapters:[
+ ["4.1 Distributions",`A distribution describes how values occur in a dataset. It can be summarized by its center, spread, shape, and unusual observations. Common shapes include symmetric, left-skewed, right-skewed, and multimodal distributions.`],
+ ["4.2 Representing and Plotting Histograms",`To construct a histogram, divide a numerical range into bins and count observations in each bin. Equal-width bins make counts easy to compare. If bin widths differ, density rather than raw count may be needed for a fair comparison. Always report or consider the bin settings when interpreting a plot.`],
+ ["4.3 Outliers",`An outlier is an observation unusually distant from most of the data. It may represent an error, a rare but valid event, or a different population. Investigate its source before removing it. The 1.5 × IQR rule flags values below Q1 − 1.5IQR or above Q3 + 1.5IQR as potential outliers; it is a screening rule, not a verdict.`],
+ ["4.4 Summarizing Distributions and Variance",`Mean and median describe central tendency; range, interquartile range (IQR), variance, and standard deviation describe spread. Variance measures average squared deviation from the mean. For a population, σ² = Σ(xᵢ − μ)²/N. For a sample, the usual unbiased sample variance divides the sum of squared deviations by n − 1. Standard deviation is the square root of variance and is expressed in the original units.`],
+ ["4.5 Reporting Results",`A statistical report should state the question, dataset and sample size, method, estimate, units, uncertainty where available, and limitations. Use appropriate precision and distinguish statistical evidence from practical importance. Charts and summaries should support, not replace, a clear explanation.`],
+ ["4.6 Probability Mass Function (PMF)",`A PMF gives the probability of each possible value of a discrete random variable. Each probability is between zero and one, and all probabilities sum to one. A PMF can be shown as a table or bar chart. It answers questions such as the probability that a fair die shows 4 (1/6).`],
+ ["4.7 Other Visualizations and the Class Size Paradox",`A class-size paradox can arise when averages are combined across groups of very different sizes: the overall average is weighted by group size and may differ from the simple average of group averages. Always identify the denominator and weighting used. For example, the mean class size across all students differs from the mean of each classroom's size if classrooms have unequal student counts.`],
+ ["4.8 DataFrame Indexing",`In Pandas, a DataFrame stores labeled rows and columns. Use df["column"] to select a column, .loc for label-based selection, and .iloc for integer-position selection. Filtering with a Boolean condition selects rows meeting that condition. Clear indexing helps avoid accidentally analyzing the wrong subset.`],
+ ["4.9 Cumulative Distribution Functions (CDFs)",`The CDF F(x) = P(X ≤ x) gives the probability that a random variable is at most x. It never decreases, stays between zero and one, and approaches one as x increases. For a discrete variable, the CDF accumulates PMF probabilities. Unlike a PMF, it summarizes probability up to a threshold.`],
+ ["4.10 Limits of PMFs and Percentile-Based Statistics",`A PMF applies to discrete variables; continuous variables are described using probability density functions, where probabilities are areas over intervals. Percentiles identify positions in ordered data: the 50th percentile is the median, and the 25th and 75th percentiles define quartiles. Percentile calculations can vary slightly by software convention.`],
+ ["4.11 Random Numbers and Comparing Percentile Ranks",`Random numbers can be generated by a pseudorandom generator for simulation and sampling. A percentile rank describes the proportion of observations at or below a value, according to the chosen convention. Percentile ranks help compare relative standing across distributions, but they do not imply equal absolute differences.`],
+ ["4.12 Modeling Distributions: Exponential",`The exponential distribution models non-negative waiting times between events in a constant-rate Poisson process. Its rate parameter λ is positive, and its mean is 1/λ. The model assumes a constant event rate and independent arrivals; these assumptions may not fit every real process.`],
+ ["4.13 Normal Distribution",`The normal distribution is a symmetric, bell-shaped continuous distribution determined by mean μ and standard deviation σ. Mean, median, and mode coincide. Approximately 68%, 95%, and 99.7% of values lie within one, two, and three standard deviations of the mean for an ideal normal distribution.`],
+ ["4.14 Lognormal Distribution",`A positive variable is lognormally distributed when its natural logarithm follows a normal distribution. Such data are often right-skewed and can represent multiplicative growth, sizes, or durations. The arithmetic mean is typically greater than the median in a non-degenerate lognormal distribution.`]
+ ]},
+5:{title:"Module 5: Time Series Analysis and Predictive Modeling",subtitle:"Learning from time-ordered observations and building predictions",chapters:[
+ ["5.1 Time Series Analysis",`A time series is a sequence of observations recorded over time, such as daily sales or hourly temperature. Time order matters because observations may depend on earlier observations. Common components include trend, seasonality, cycles, and irregular variation.`],
+ ["5.2 Importing and Cleaning Time Series Data",`A typical workflow imports data, parses timestamps into a datetime type, sorts observations by time, checks duplicate timestamps, verifies frequency and units, and handles missing or invalid values. Pandas supports datetime indexing and resampling. Never fill gaps blindly: choose a method that fits the data-generating process.`],
+ ["5.3 Plotting Time Series",`Plotting values against time helps reveal trends, seasonality, level shifts, unusual observations, and gaps. Use clear time labels and appropriate aggregation for dense data. Multiple series should use comparable time ranges and scales when direct comparison is intended.`],
+ ["5.4 Moving Averages",`A moving average smooths short-term fluctuations by averaging a fixed window of observations. A simple moving average over k points is the mean of the most recent k values. Larger windows create smoother curves but respond more slowly to changes. Centered averages can use future observations and therefore are not appropriate as real-time predictors.`],
+ ["5.5 Missing Values",`Missing time-series values may result from sensor failure, non-reporting, or irregular sampling. Options include leaving gaps, interpolation, forward filling, or model-based imputation. The correct choice depends on why values are missing and the intended analysis; interpolation can create artificial smoothness and should be documented.`],
+ ["5.6 Serial Correlation and Autocorrelation",`Serial correlation describes dependence between observations at different times. Autocorrelation is the correlation between a series and a lagged version of itself. Lag-1 autocorrelation compares adjacent observations; higher lags examine longer separations. Strong autocorrelation means observations are not independent and can influence model choice and uncertainty estimates.`],
+ ["5.7 Predictive Modeling: Overview",`Predictive modeling learns a relationship between input features and a target using historical examples. A supervised workflow defines the target, prepares features, splits data, trains a model, evaluates it, and deploys or communicates predictions. For time series, preserve chronological order to avoid using future information to predict the past.`],
+ ["5.8 Evaluating Predictive Models",`Evaluation must match the task. Regression metrics include MAE, MSE, and RMSE; classification metrics include accuracy, precision, recall, F1-score, and ROC-AUC. Compare results with a simple baseline and inspect errors across relevant groups. A model should be evaluated on data not used to fit or tune it.`],
+ ["5.9 Building Predictive Model Solutions",`A practical solution includes data collection, preprocessing, feature engineering, baseline creation, model selection, validation, error analysis, and monitoring after deployment. Prevent data leakage, document assumptions, and retrain only when evidence and a controlled process justify it. Good models must be useful and reliable, not merely complex.`],
+ ["5.10 Sentiment Analysis",`Sentiment analysis uses text to estimate opinions or emotional polarity, often labeling text as positive, negative, or neutral. A basic workflow cleans text, tokenizes it, represents it with rules or features, applies a lexicon or trained model, and evaluates predictions against labeled examples. Sarcasm, context, language differences, and domain-specific meanings can cause errors.`]
+ ]}
+};
+
+let activeBookNumber = 1;
+let activeBook = null;
+let bookPages = [];
+let spreadIndex = 0;
+
+function escapeBookHtml(value) {
+ return String(value ?? "").replace(/[&<>"']/g, ch => ({
+   "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+ })[ch]);
+}
+
+function makeBookPage(title, text, example, pageIndex, moduleNumber) {
+ const safeTitle = escapeBookHtml(title);
+ const safeText = escapeBookHtml(text);
+ const safeExample = example ? `<div class="page-example"><strong>Example / key idea:</strong> ${escapeBookHtml(example)}</div>` : "";
+ return `<div class="page-kicker">Data Science · Module ${moduleNumber}</div>
+         <h3>${safeTitle}</h3><p>${safeText}</p>${safeExample}
+         <div class="page-number">${pageIndex + 1}</div>`;
+}
+
+function buildBookPages(number, book) {
+ const pages = [];
+ pages.push({
+   type:"cover-left",
+   html:`<div class="cover-art"><div class="ornament">✦ ❖ ✦</div><div class="cover-sub">Study Edition · Module ${number}</div><h2 class="flipbook-cover-title">${escapeBookHtml(book.title)}</h2><p>${escapeBookHtml(book.subtitle)}</p><div class="ornament">❦</div><p>DATA SCIENCE DIGITAL LIBRARY</p></div><div class="page-number">Cover</div>`
+ });
+ const contents = book.chapters.map((chapter, i) => ({
+   title: chapter[0],
+   text: chapter[1],
+   example: chapter[2] || "",
+   html: makeBookPage(chapter[0], chapter[1], chapter[2] || "", i + 1, number)
+ }));
+ pages.push({
+   type:"contents",
+   html:`<div class="page-kicker">Reader's guide</div><h3>Contents</h3><p>This chapter follows the module topics in your syllabus. Use the contents links below to jump directly to a topic.</p><ul>${book.chapters.map((c,i)=>`<li>${escapeBookHtml(c[0])}</li>`).join("")}</ul><div class="page-callout"><strong>How to study:</strong> Read each topic, write a short definition in your own words, and solve a small example before moving on.</div><div class="page-number">Contents</div>`
+ });
+ contents.forEach(p => pages.push(p));
+ pages.push({
+   type:"revision",
+   html:`<div class="page-kicker">End of module</div><h3>Revision Checklist</h3><p>Before finishing this module, check that you can:</p><ul><li>Define the important terms without looking at the notes.</li><li>Explain when and why each method is used.</li><li>Work through at least one small example.</li><li>Identify common limitations or mistakes.</li><li>Summarize the topic in a few sentences.</li></ul><div class="page-callout"><strong>Revision tip:</strong> These are original study notes organized around the syllabus topics supplied, not a reproduction of a specific published textbook.</div><div class="page-number">Revision</div>`
+ });
+ return pages;
+}
+
+function renderSpread(direction = "") {
+ if (!bookPages.length) return;
+ const leftIndex = spreadIndex;
+ const rightIndex = spreadIndex + 1;
+ const left = document.getElementById("leftPage");
+ const right = document.getElementById("rightPage");
+ left.innerHTML = bookPages[leftIndex]?.html || `<div class="page-kicker">Data Science</div><h3>End of chapter</h3><div class="page-number"></div>`;
+ right.innerHTML = bookPages[rightIndex]?.html || `<div class="page-kicker">Data Science</div><h3>End of chapter</h3><div class="page-number"></div>`;
+ left.style.display = "";
+ right.style.display = "";
+ const flipbook = document.getElementById("flipbook");
+ flipbook.classList.remove("animate-next","animate-prev");
+ if (direction) {
+   void flipbook.offsetWidth;
+   flipbook.classList.add(direction === "next" ? "animate-next" : "animate-prev");
+ }
+ const endIndex = Math.min(rightIndex + 1, bookPages.length);
+ document.getElementById("flipbookStatus").textContent =
+   `Pages ${leftIndex + 1}–${endIndex} of ${bookPages.length}`;
+ document.getElementById("prevPageBtn").disabled = spreadIndex === 0;
+ document.getElementById("nextPageBtn").disabled = spreadIndex + 2 >= bookPages.length;
+ document.getElementById("bookIndex").innerHTML =
+   `<strong>Jump to a topic</strong>` +
+   activeBook.chapters.map((c,i)=>`<button type="button" onclick="jumpToBookTopic(${i})">${escapeBookHtml(c[0])}</button>`).join("");
+}
+
+function openModuleNotes(number) {
+ const book = moduleBooks[number];
+ if (!book) return;
+ activeBookNumber = number;
+ activeBook = book;
+ bookPages = buildBookPages(number, book);
+ spreadIndex = 0;
+ document.getElementById("moduleNotes").style.display = "block";
+ renderSpread();
+ document.getElementById("moduleNotes").scrollIntoView({behavior:"smooth"});
+}
+
+function turnBookPage(direction) {
+ const maxIndex = Math.max(0, bookPages.length - 2);
+ const nextIndex = Math.min(maxIndex, Math.max(0, spreadIndex + direction * 2));
+ if (nextIndex === spreadIndex) return;
+ spreadIndex = nextIndex;
+ renderSpread(direction > 0 ? "next" : "prev");
+}
+
+function jumpToBookTopic(chapterIndex) {
+ // Pages 0 and 1 are the cover and contents; topics begin at index 2.
+ const targetPageIndex = chapterIndex + 2;
+ spreadIndex = targetPageIndex % 2 === 0 ? targetPageIndex : targetPageIndex - 1;
+ spreadIndex = Math.min(spreadIndex, Math.max(0, bookPages.length - 2));
+ renderSpread();
+ document.getElementById("flipbook").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function closeModuleNotes() {
+ document.getElementById("moduleNotes").style.display = "none";
+ const modules = document.getElementById("modules");
+ if (modules) modules.scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+
+</body>
+
+</html>
